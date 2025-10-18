@@ -1,0 +1,6 @@
+{
+    "welcome_talabajon": "Welcome to Talabajon",
+        "@welcome_talabajon":{
+            "description":"Bu onboarding title"
+    }
+}
