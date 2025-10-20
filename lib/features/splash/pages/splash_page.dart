@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:talabajon/core/routing/routes.dart';
 import 'package:talabajon/core/utils/colors.dart';
 import 'package:talabajon/core/utils/styles.dart';
@@ -18,8 +19,13 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
 
-    Future.delayed(const Duration(seconds: 3), () {
-      context.go(Routes.selectLanguage);
+    Future.delayed(const Duration(seconds: 3), () async{
+      final prefs = SharedPreferencesAsync();
+      final locale = await prefs.getString('locale');
+      if (locale == null) {
+        context.go(Routes.selectLanguage);
+      }
+      context.go(Routes.home);
     });
   }
 

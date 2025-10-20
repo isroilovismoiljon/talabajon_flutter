@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:talabajon/core/utils/fonts.dart';
 
 import 'colors.dart';
 
@@ -14,15 +15,17 @@ class AppStyles {
     color: AppColors.black,
   );
 
-  static const w700s24w = TextStyle(
+  static const w700s24white = TextStyle(
     fontSize: 24,
     fontWeight: FontWeight.w700,
     color: AppColors.white,
+    fontFamily: FontFamily.montserrat,
   );
   static const w700s24 = TextStyle(
     fontSize: 24,
     fontWeight: FontWeight.w700,
     color: AppColors.black,
+    fontFamily: FontFamily.montserrat,
   );
 
   static const w600s16w = TextStyle(
@@ -35,5 +38,4 @@ class AppStyles {
     fontWeight: FontWeight.w600,
     color: AppColors.black,
   );
-
 }

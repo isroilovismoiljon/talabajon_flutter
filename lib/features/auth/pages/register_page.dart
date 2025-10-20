@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:talabajon/core/utils/styles.dart';
 import 'package:talabajon/features/auth/pages/custom_text_field.dart';
 
 import '../../../core/utils/icons.dart';
@@ -26,7 +27,7 @@ class _RegisterPageState extends State<RegisterPage> {
           SizedBox(
             height: 118.h,
           ),
-          Text('Hisob yarating'),
+          Text('Hisob yarating', style: AppStyles.w700s24,),
           Text('Ilovadan foydalanish uchun hisob yarating'),
           SizedBox(
             height: 114.h,
