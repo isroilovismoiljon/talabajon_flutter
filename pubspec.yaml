@@ -46,6 +46,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   shared_preferences: ^2.5.3
+  dio: ^5.9.0
 
 dev_dependencies:
   flutter_test:
