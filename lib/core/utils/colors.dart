@@ -11,4 +11,13 @@ class AppColors {
   static const black = Color(0xFF424242);
   static const hintText = Color(0xFFB1B1B1);
   static const border = Color(0xFFD2D2D2);
+  
+  // OTP Input colors
+  static const otpNeutralBorder = Color(0xFF666666);
+  static const otpNeutralText = Color(0xFF1A1A1A);
+  static const otpErrorBorder = Color(0xFFFF3B30);
+  static const otpErrorText = Color(0xFFFF3B30);
+  static const otpSuccessBorder = Color(0xFF00C853);
+  static const otpSuccessText = Color(0xFF00C853);
+  static const otpBackground = Color(0xFFFFFFFF);
 }

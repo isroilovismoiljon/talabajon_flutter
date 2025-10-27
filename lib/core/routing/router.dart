@@ -9,7 +9,7 @@ import '../../features/splash/pages/select_lang_page.dart';
 import '../../features/splash/pages/splash_page.dart';
 
 final router = GoRouter(
-  initialLocation: Routes.splash,
+  initialLocation: Routes.verify,
 
   routes: <RouteBase>[
     GoRoute(

@@ -2,8 +2,8 @@ import 'package:dio/dio.dart';
 import '../utils/result.dart';
 import 'auth_interceptor.dart';
 
-class ApiClient {
-  ApiClient({required AuthInterceptor interceptor, required String baseUrl})
+class ApiClientStudent {
+  ApiClientStudent({required AuthInterceptor interceptor, required String baseUrl})
       : dio = Dio(
     BaseOptions(
       baseUrl: baseUrl,

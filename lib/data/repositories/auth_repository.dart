@@ -8,10 +8,10 @@ import '../models/login_model.dart';
 import '../models/register_model.dart';
 
 class AuthRepository {
-  final ApiClient _client;
+  final ApiClientStudent _client;
   final FlutterSecureStorage _secureStorage;
 
-  AuthRepository({required ApiClient client, required FlutterSecureStorage secureStorage})
+  AuthRepository({required ApiClientStudent client, required FlutterSecureStorage secureStorage})
       : _client = client, _secureStorage = secureStorage;
 
   Future<Result<String>> register(RegisterModel model) async {
@@ -61,31 +61,31 @@ class AuthRepository {
     );
   }
 
-  Future<Result<bool>> verify(ForgotPasswordModel model) async {
-    var result = await _client.post<Map<String, dynamic>>(
-      '/auth/reset-password/verify',
-      data: model.toJsonVerify(),
-    );
-    return result.fold(
-          (error) => Result.error(error),
-          (value)async {
-        return Result.ok(true);
-      },
-    );
-  }
+  // Future<Result<bool>> verify(ForgotPasswordModel model) async {
+  //   var result = await _client.post<Map<String, dynamic>>(
+  //     '/auth/reset-password/verify',
+  //     data: model.toJsonVerify(),
+  //   );
+  //   return result.fold(
+  //         (error) => Result.error(error),
+  //         (value)async {
+  //       return Result.ok(true);
+  //     },
+  //   );
+  // }
 
-  Future<Result<bool>> reset(ForgotPasswordModel model) async {
-    var result = await _client.post<Map<String, dynamic>>(
-      '/auth/reset-password/reset',
-      data: model.toJsonReset(),
-    );
-    return result.fold(
-          (error) => Result.error(error),
-          (value)async {
-        return Result.ok(true);
-      },
-    );
-  }
+  // Future<Result<bool>> reset(ForgotPasswordModel model) async {
+  //   var result = await _client.post<Map<String, dynamic>>(
+  //     '/auth/reset-password/reset',
+  //     data: model.toJsonReset(),
+  //   );
+  //   return result.fold(
+  //         (error) => Result.error(error),
+  //         (value)async {
+  //       return Result.ok(true);
+  //     },
+  //   );
+  // }
 
   Future<void> logout()async{
     await _secureStorage.delete(key: 'token');

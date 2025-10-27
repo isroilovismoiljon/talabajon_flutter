@@ -9,7 +9,7 @@ final dependencies = [
   Provider(create: (context) => FlutterSecureStorage()),
   Provider(create: (context) => AuthInterceptor(secureStorage: context.read())),
   Provider(
-    create: (context) => ApiClient(interceptor: context.read(), baseUrl: "http://192.168.11.197:8888/api/v1"),
+    create: (context) => ApiClientStudent(interceptor: context.read(), baseUrl: "http://192.168.11.197:8888/api/v1"),
     // create: (context) => ApiClient(interceptor: context.read(), baseUrl: "http://172.20.10.6:8888/api/v1")
   ),
   Provider(

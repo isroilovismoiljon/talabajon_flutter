@@ -4,4 +4,5 @@ class AppIcons {
   static const rus = "assets/icons/rus.svg";
   static const eng = "assets/icons/eng.svg";
   static const account = "assets/icons/account.svg";
+  static const telegram = "assets/icons/telegram.svg";
 }
