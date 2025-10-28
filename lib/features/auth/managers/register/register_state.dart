@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:talabajon/data/models/auth/register_response_model.dart';
-
 import '../../../../core/constants/status.dart';
 
 class RegisterState extends Equatable {
