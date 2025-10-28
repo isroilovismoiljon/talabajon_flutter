@@ -1,24 +1,23 @@
-
-class RegisterModel {
+class RegisterRequestModel {
   final String username;
   final String firstName;
   final String lastName;
   final String password;
-  final int referralId;
+  final int? referralId;
 
-  RegisterModel({
+  RegisterRequestModel({
     required this.username,
     required this.firstName,
     required this.lastName,
     required this.password,
-    required this.referralId,
+    this.referralId,
   });
 
   Map<String, dynamic> toJson() => {
     "username": username,
-    "firstName": firstName,
-    "lastName": lastName,
+    "first_name": firstName,
+    "last_name": lastName,
     "password": password,
-    "referralId": referralId,
+    if (referralId != null) "referral_id": referralId,
   };
 }

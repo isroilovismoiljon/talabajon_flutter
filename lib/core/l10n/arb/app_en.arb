@@ -2,5 +2,52 @@
     "welcome_talabajon": "Welcome to Talabajon",
         "@welcome_talabajon":{
             "description":"Bu onboarding title"
+    },
+
+    "please_select_language_for_app": "Please select a language for the app",
+        "@please_select_language_for_app":{
+            "description":"Bu languageni tanlash"
+    },
+
+    "create_account": "Create account",
+        "@create_account":{
+            "description":"Bu register title1"
+    },
+
+    "create_account_to_use_app": "Create an account to use the app",
+        "@create_account_to_use_app":{
+            "description":"Bu register title2"
+    },
+
+    "first_name": "First name",
+        "@first_name":{
+            "description":"Bu textField first name"
+    },
+
+    "last_name": "Last name",
+        "@last_name":{
+            "description":"Bu textFiled last name"
+    },
+
+    "username": "Username",
+        "@username":{
+            "description":"Bu textFiled username"
+    },
+
+    "password": "Password",
+        "@password":{
+            "description":"Bu textFiled password"
+    },
+
+    "create_profile": "Create Profile",
+        "@create_profile":{
+            "description":"Bu register success"
+    },
+
+    "referal_id": "Referal Id (Optional)",
+        "@referal_id":{
+            "description":"Bu textField referal"
     }
+
+
 }

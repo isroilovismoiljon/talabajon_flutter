@@ -14,8 +14,7 @@ class AppStyles {
     fontWeight: FontWeight.w600,
     color: AppColors.black,
   );
-
-  static const w700s24white = TextStyle(
+  static const w700s24w = TextStyle(
     fontSize: 24,
     fontWeight: FontWeight.w700,
     color: AppColors.white,
@@ -27,7 +26,16 @@ class AppStyles {
     color: AppColors.black,
     fontFamily: FontFamily.montserrat,
   );
-
+  static const w600s18w = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w600,
+    color: AppColors.white,
+  );
+  static const w600s18 = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w600,
+    color: AppColors.black,
+  );
   static const w600s16w = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w600,

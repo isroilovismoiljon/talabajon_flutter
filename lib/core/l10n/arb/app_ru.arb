@@ -1,3 +1,13 @@
 {
-    "welcome_talabajon": "Добро пожаловать в Talabajon"
+    "welcome_talabajon": "Добро пожаловать в Talabajon",
+    "please_select_language_for_app": "Пожалуйста, выберите язык для приложения",
+    "create_account": "Создать аккаунт",
+    "create_account_to_use_app": "Создайте аккаунт, чтобы использовать приложение",
+    "first_name": "Имя",
+    "last_name": "Фамилия",
+    "username": "Имя пользователя",
+    "password": "Пароль",
+    "create_profile": "Создать профиль",
+    "referal_id": "Реферальный ID (Необязательно)"
+
 }

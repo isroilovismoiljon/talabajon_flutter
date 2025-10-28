@@ -6,13 +6,16 @@ import 'package:talabajon/core/routing/routes.dart';
 import 'package:talabajon/core/utils/styles.dart';
 import 'package:talabajon/core/utils/icons.dart';
 import 'package:talabajon/features/common/managers/localizatoin_cubit.dart';
-import 'package:talabajon/features/common/widgets/svg_text_button_popular.dart';
+import 'package:talabajon/features/common/widgets/custom_svg_button.dart';
+
+import '../../../core/l10n/app_localizations.dart';
 
 class SelectLanguagePage extends StatelessWidget {
   const SelectLanguagePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final local = MyLocalizations.of(context)!;
     return Scaffold(
       body: Center(
         child: Column(
@@ -20,12 +23,12 @@ class SelectLanguagePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "Please select your language",
+              local.please_select_language_for_app,
               style: AppStyles.w700s24,
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 20.h),
-            SvgTextButtonPopular(
+            CustomSvgButton(
               title: 'Oʻzbek',
               svg: AppIcons.uzb,
               onPressed: () {
@@ -34,7 +37,7 @@ class SelectLanguagePage extends StatelessWidget {
               },
             ),
 
-            SvgTextButtonPopular(
+            CustomSvgButton(
               title: 'Русский',
               svg: AppIcons.rus,
               onPressed: () {
@@ -43,7 +46,7 @@ class SelectLanguagePage extends StatelessWidget {
               },
             ),
 
-            SvgTextButtonPopular(
+            CustomSvgButton(
               title: 'English',
               svg: AppIcons.eng,
               onPressed: () {

@@ -10,7 +10,7 @@ class AuthInterceptor extends Interceptor {
 
   final dio = Dio(
     BaseOptions(
-      baseUrl: "https://localhost:7086/api/v1",
+      baseUrl: "http://147.45.142.61/api",
       // baseUrl: "http://172.20.10.6:8888/api/v1",
       // validateStatus: (status) => true,
     ),

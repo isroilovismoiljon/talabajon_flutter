@@ -1,3 +1,13 @@
 {
-    "welcome_talabajon": "Talabajon ilovasiga xush kelibsiz"
+    "welcome_talabajon": "Talabajon ilovasiga xush kelibsiz",
+    "please_select_language_for_app": "Iltimos, ilova uchun tilni tanlang",
+    "create_account": "Hisob yarating",
+    "create_account_to_use_app": "Ilovadan foydalanish uchun hisob yarating",
+    "first_name": "Ism",
+    "last_name": "Familiya",
+    "username": "Foydalanuvchi nomi",
+    "password": "Parol",
+    "create_profile": "Profil yaratish",
+    "referal_id": "Referal Id (Ixtiyoriy)"
+
 }
