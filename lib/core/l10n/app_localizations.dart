@@ -105,6 +105,60 @@ abstract class MyLocalizations {
   /// In en, this message translates to:
   /// **'Welcome to Talabajon'**
   String get welcome_talabajon;
+
+  /// Bu languageni tanlash
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a language for the app'**
+  String get please_select_language_for_app;
+
+  /// Bu register title1
+  ///
+  /// In en, this message translates to:
+  /// **'Create account'**
+  String get create_account;
+
+  /// Bu register title2
+  ///
+  /// In en, this message translates to:
+  /// **'Create an account to use the app'**
+  String get create_account_to_use_app;
+
+  /// Bu textField first name
+  ///
+  /// In en, this message translates to:
+  /// **'First name'**
+  String get first_name;
+
+  /// Bu textFiled last name
+  ///
+  /// In en, this message translates to:
+  /// **'Last name'**
+  String get last_name;
+
+  /// Bu textFiled username
+  ///
+  /// In en, this message translates to:
+  /// **'Username'**
+  String get username;
+
+  /// Bu textFiled password
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get password;
+
+  /// Bu register success
+  ///
+  /// In en, this message translates to:
+  /// **'Create Profile'**
+  String get create_profile;
+
+  /// Bu textField referal
+  ///
+  /// In en, this message translates to:
+  /// **'Referal Id (Optional)'**
+  String get referal_id;
 }
 
 class _MyLocalizationsDelegate extends LocalizationsDelegate<MyLocalizations> {

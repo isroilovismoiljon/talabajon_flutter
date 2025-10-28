@@ -10,4 +10,33 @@ class MyLocalizationsRu extends MyLocalizations {
 
   @override
   String get welcome_talabajon => 'Добро пожаловать в Talabajon';
+
+  @override
+  String get please_select_language_for_app =>
+      'Пожалуйста, выберите язык для приложения';
+
+  @override
+  String get create_account => 'Создать аккаунт';
+
+  @override
+  String get create_account_to_use_app =>
+      'Создайте аккаунт, чтобы использовать приложение';
+
+  @override
+  String get first_name => 'Имя';
+
+  @override
+  String get last_name => 'Фамилия';
+
+  @override
+  String get username => 'Имя пользователя';
+
+  @override
+  String get password => 'Пароль';
+
+  @override
+  String get create_profile => 'Создать профиль';
+
+  @override
+  String get referal_id => 'Реферальный ID (Необязательно)';
 }

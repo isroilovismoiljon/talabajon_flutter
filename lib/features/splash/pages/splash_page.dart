@@ -18,15 +18,21 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
+    _navigate();
+  }
 
-    Future.delayed(const Duration(seconds: 3), () async{
-      final prefs = SharedPreferencesAsync();
-      final locale = await prefs.getString('locale');
-      if (locale == null) {
-        context.go(Routes.selectLanguage);
-      }
+  Future<void> _navigate() async {
+    await Future.delayed(const Duration(seconds: 2));
+
+    final prefs = await SharedPreferences.getInstance();
+    final hasOpenedBefore = prefs.getBool('hasOpenedBefore') ?? false;
+
+    if (hasOpenedBefore) {
       context.go(Routes.home);
-    });
+    } else {
+      await prefs.setBool('hasOpenedBefore', true);
+      context.go(Routes.selectLanguage);
+    }
   }
 
   @override
