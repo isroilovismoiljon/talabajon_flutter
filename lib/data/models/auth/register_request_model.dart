@@ -15,9 +15,9 @@ class RegisterRequestModel {
 
   Map<String, dynamic> toJson() => {
     "username": username,
-    "first_name": firstName,
-    "last_name": lastName,
+    "firstName": firstName,
+    "lastName": lastName,
     "password": password,
-    if (referralId != null) "referral_id": referralId,
+    if (referralId != null) "referralId": referralId,
   };
 }
