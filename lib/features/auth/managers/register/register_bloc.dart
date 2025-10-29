@@ -5,18 +5,16 @@ import 'package:talabajon/features/auth/managers/register/register_event.dart';
 import 'package:talabajon/features/auth/managers/register/register_state.dart';
 
 class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
-  RegisterBloc({required AuthRepository authRepo})
-    : _authRepo = authRepo,
-      super(RegisterState.initial()) {
+  RegisterBloc({
+    required AuthRepository authRepo,
+  }) : _authRepo = authRepo,
+       super(RegisterState.initial()) {
     on<RegisterPostEvent>(_fetchRegister);
   }
 
   final AuthRepository _authRepo;
 
-  Future<void> _fetchRegister(
-    RegisterPostEvent event,
-    Emitter<RegisterState> emit,
-  ) async {
+  Future<void> _fetchRegister(RegisterPostEvent event, Emitter<RegisterState> emit) async {
     emit(state.copyWith(registerStatus: Status.loading, errorMessage: null));
     var result = await _authRepo.register(event.data);
     result.fold(

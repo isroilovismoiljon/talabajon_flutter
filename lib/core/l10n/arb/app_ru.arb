@@ -8,6 +8,14 @@
     "username": "Имя пользователя",
     "password": "Пароль",
     "create_profile": "Создать профиль",
-    "referal_id": "Реферальный ID (Необязательно)"
+    "referral_id": "Реферальный ID (Необязательно)",
+    "enter_the_code": "Введите код",
+    "go_to_minute": "Перейдите в Telegram-бот ниже и получите свой 5-минутный код",
+    "get_the_code": "Получить код",
+    "verification_code_has_been_sent": "Код подтверждения был отправлен:",
+    "get_code": "Получить код",
+    "welcome_to_talabajon": "Добро пожаловать в Talabajon!",
+    "log_in_your_account_use_the_app": "Войдите в свой аккаунт,\nчтобы использовать приложение",
+    "login": "Войти"
 
 }

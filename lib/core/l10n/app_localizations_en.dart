@@ -37,5 +37,32 @@ class MyLocalizationsEn extends MyLocalizations {
   String get create_profile => 'Create Profile';
 
   @override
-  String get referal_id => 'Referal Id (Optional)';
+  String get referral_id => 'Referral Id (Optional)';
+
+  @override
+  String get enter_the_code => 'Enter the code';
+
+  @override
+  String get go_to_minute =>
+      'Go to the Telegram bot below and\nget your 5-minute code';
+
+  @override
+  String get get_the_code => 'Get the code';
+
+  @override
+  String get verification_code_has_been_sent =>
+      'Verification code has been sent:';
+
+  @override
+  String get get_code => 'Get code';
+
+  @override
+  String get welcome_to_talabajon => 'Welcome to Talabajon!';
+
+  @override
+  String get log_in_your_account_use_the_app =>
+      'Log in to your account\nto use the app';
+
+  @override
+  String get login => 'Login';
 }

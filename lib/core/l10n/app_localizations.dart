@@ -154,11 +154,59 @@ abstract class MyLocalizations {
   /// **'Create Profile'**
   String get create_profile;
 
-  /// Bu textField referal
+  /// Bu textField referral
   ///
   /// In en, this message translates to:
-  /// **'Referal Id (Optional)'**
-  String get referal_id;
+  /// **'Referral Id (Optional)'**
+  String get referral_id;
+
+  /// Bu verify title
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the code'**
+  String get enter_the_code;
+
+  /// Bu verify ogoxlantirish time
+  ///
+  /// In en, this message translates to:
+  /// **'Go to the Telegram bot below and\nget your 5-minute code'**
+  String get go_to_minute;
+
+  /// Bu verify title2
+  ///
+  /// In en, this message translates to:
+  /// **'Get the code'**
+  String get get_the_code;
+
+  /// Bu verify time
+  ///
+  /// In en, this message translates to:
+  /// **'Verification code has been sent:'**
+  String get verification_code_has_been_sent;
+
+  /// Bu verify success
+  ///
+  /// In en, this message translates to:
+  /// **'Get code'**
+  String get get_code;
+
+  /// Bu login title
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to Talabajon!'**
+  String get welcome_to_talabajon;
+
+  /// Bu login title2
+  ///
+  /// In en, this message translates to:
+  /// **'Log in to your account\nto use the app'**
+  String get log_in_your_account_use_the_app;
+
+  /// Bu login success
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get login;
 }
 
 class _MyLocalizationsDelegate extends LocalizationsDelegate<MyLocalizations> {

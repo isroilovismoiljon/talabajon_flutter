@@ -1,18 +1,18 @@
 class VerifyResponseModel {
   final bool success;
-  final VerifyData? data;
-  final String? timestamp;
+  final VerifyData data;
+  final String timestamp;
 
   VerifyResponseModel({
     required this.success,
-    this.data,
-    this.timestamp,
+    required this.data,
+    required this.timestamp,
   });
 
   factory VerifyResponseModel.fromJson(Map<String, dynamic> json) {
     return VerifyResponseModel(
-      success: json['success'] ?? false,
-      data: json['data'] != null ? VerifyData.fromJson(json['data']) : null,
+      success: json['success'],
+      data: VerifyData.fromJson(json['data']),
       timestamp: json['timestamp'],
     );
   }
@@ -33,8 +33,8 @@ class VerifyData {
 
   factory VerifyData.fromJson(Map<String, dynamic> json) {
     return VerifyData(
-      success: json['success'] ?? false,
-      message: json['message'] ?? '',
+      success: json['success'],
+      message: json['message'],
     );
   }
 

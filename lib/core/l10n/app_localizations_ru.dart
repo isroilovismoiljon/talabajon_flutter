@@ -38,5 +38,32 @@ class MyLocalizationsRu extends MyLocalizations {
   String get create_profile => 'Создать профиль';
 
   @override
-  String get referal_id => 'Реферальный ID (Необязательно)';
+  String get referral_id => 'Реферальный ID (Необязательно)';
+
+  @override
+  String get enter_the_code => 'Введите код';
+
+  @override
+  String get go_to_minute =>
+      'Перейдите в Telegram-бот ниже и получите свой 5-минутный код';
+
+  @override
+  String get get_the_code => 'Получить код';
+
+  @override
+  String get verification_code_has_been_sent =>
+      'Код подтверждения был отправлен:';
+
+  @override
+  String get get_code => 'Получить код';
+
+  @override
+  String get welcome_to_talabajon => 'Добро пожаловать в Talabajon!';
+
+  @override
+  String get log_in_your_account_use_the_app =>
+      'Войдите в свой аккаунт,\nчтобы использовать приложение';
+
+  @override
+  String get login => 'Войти';
 }

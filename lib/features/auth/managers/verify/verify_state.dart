@@ -1,11 +1,12 @@
 import 'package:equatable/equatable.dart';
-import 'package:talabajon/data/models/auth/register_response_model.dart';
+import 'package:talabajon/data/models/verify/verify_response_model.dart';
+
 import '../../../../core/constants/status.dart';
 
 class VerifyState extends Equatable {
   final Status verifyStatus;
   final String? errorMessage;
-  final RegisterResponseModel? verify;
+  final VerifyResponseModel? verify;
 
   const VerifyState({
     required this.verifyStatus,
@@ -22,7 +23,7 @@ class VerifyState extends Equatable {
   VerifyState copyWith({
     Status? verifyStatus,
     String? errorMessage,
-    RegisterResponseModel? verify,
+    VerifyResponseModel? verify,
   }) {
     return VerifyState(
       verifyStatus: verifyStatus ?? this.verifyStatus,

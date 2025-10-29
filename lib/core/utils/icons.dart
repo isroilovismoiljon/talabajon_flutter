@@ -10,4 +10,5 @@ class AppIcons {
   static const referal = "assets/icons/referal.svg";
   static const eyeOn = "assets/icons/eye-on.svg";
   static const eyeOff = "assets/icons/eye-off.svg";
+  static const logout = "assets/icons/logout.svg";
 }

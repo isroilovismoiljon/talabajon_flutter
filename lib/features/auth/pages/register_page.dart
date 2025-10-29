@@ -30,13 +30,10 @@ class _RegisterPageState extends State<RegisterPage> {
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
   final referralController = TextEditingController();
-
   bool isFormValid = false;
-
   @override
   void initState() {
     super.initState();
-
     nameController.addListener(validateForm);
     lastNameController.addListener(validateForm);
     usernameController.addListener(validateForm);
@@ -124,12 +121,11 @@ class _RegisterPageState extends State<RegisterPage> {
                   CustomTextField(
                     nameController: referralController,
                     icon: AppIcons.referal,
-                    hintText: local.referal_id,
+                    hintText: local.referral_id,
                   ),
                 ],
               ),
               SizedBox(height: 20.h),
-
               BlocBuilder<RegisterBloc, RegisterState>(
                 builder: (context, state) => CustomButton(
                   title: state.registerStatus == Status.loading ? "Loading..." : local.create_account,

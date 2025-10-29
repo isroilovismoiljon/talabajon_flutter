@@ -17,7 +17,7 @@ class CustomSvgButton extends StatelessWidget {
   });
 
   final VoidCallback? onPressed;
-  final double width, height,border;
+  final double width, height, border;
   final Color color;
   final String title, svg;
 
@@ -25,26 +25,28 @@ class CustomSvgButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPressed,
-      child: Container(
-        width: width.w,
-        height: height.h,
-        decoration: BoxDecoration(
-          color: color,
+    return TextButton(
+      style: TextButton.styleFrom(
+        backgroundColor: color,
+        foregroundColor: AppColors.white,
+        disabledBackgroundColor: AppColors.disabledButton,
+        disabledForegroundColor: AppColors.hintText,
+        fixedSize: Size(width.w, height.h),
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(border.r),
         ),
-        child: Row(
-          spacing: 10.w,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SvgPicture.asset(svg),
-            Text(
-              title,
-              style: AppStyles.w600s16w,
-            ),
-          ],
-        ),
+      ),
+      onPressed: onPressed,
+      child: Row(
+        spacing: 10.w,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SvgPicture.asset(svg),
+          Text(
+            title,
+            style: AppStyles.w600s16w,
+          ),
+        ],
       ),
     );
   }
