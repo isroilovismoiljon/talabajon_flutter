@@ -1,18 +1,21 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:talabajon/core/utils/colors.dart';
 import 'package:talabajon/core/utils/icons.dart';
-import 'dart:async';
+import 'package:talabajon/core/utils/styles.dart';
+import 'package:talabajon/data/models/auth/register_response_model.dart';
+import 'package:talabajon/features/common/widgets/custom_svg_button.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../widgets/otp_input.dart';
-import '../widgets/envelope_icon.dart';
 
 class VerifyPage extends StatefulWidget {
-  final String? telegramBotLink;
+  final RegisterResponseModel register;
 
   const VerifyPage({
     super.key,
-    this.telegramBotLink,
+    required this.register,
   });
 
   @override
@@ -20,7 +23,7 @@ class VerifyPage extends StatefulWidget {
 }
 
 class _VerifyPageState extends State<VerifyPage> {
-  int _secondsRemaining = 119; // 1:59
+  int _secondsRemaining = 119;
   Timer? _timer;
 
   @override
@@ -53,39 +56,27 @@ class _VerifyPageState extends State<VerifyPage> {
     return '$minutes:${seconds.toString().padLeft(2, '0')}';
   }
 
-  Future<void> _openTelegramBot() async {
-    final botLink = widget.telegramBotLink ?? 'https://t.me/Talabajon_services_bot?start=8575';
-    final Uri url = Uri.parse(botLink);
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url, mode: LaunchMode.externalApplication);
-    } else {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Telegram botni ochib bo\'lmadi')),
-        );
-      }
-    }
-  }
+  String kod = "";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black.withOpacity(0.5),
+      backgroundColor: Colors.grey,
       body: Center(
         child: SingleChildScrollView(
           child: Container(
-            margin: EdgeInsets.symmetric(horizontal: 44.w, vertical: 174.h),
+            margin: EdgeInsets.symmetric(horizontal: 44.w, vertical: 17.h),
             padding: EdgeInsets.all(32.r),
             decoration: BoxDecoration(
-              color: const Color(0xFFF5F5F5),
+              color: AppColors.border,
               borderRadius: BorderRadius.circular(30.r),
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 // Icon
-                const EnvelopeIcon(),
-                SizedBox(height: 32.h),
+                SizedBox(width: 166.w, height: 165.h, child: Image.asset("assets/photos/mail.png")),
+                SizedBox(height: 11.5.h),
 
                 // Title
                 const Text(
@@ -118,13 +109,31 @@ class _VerifyPageState extends State<VerifyPage> {
                   ),
                 ),
                 SizedBox(height: 16.h),
-
-              // Code input boxes
-              const OtpInput(
-                length: 4,
-                correctOtp: '1122',
-              ),
-                SizedBox(height: 16.h),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 46.w),
+                  child: PinCodeTextField(
+                    appContext: context,
+                    length: 4,
+                    onChanged: (val) => setState(() => kod = val),
+                    autoFocus: true,
+                    keyboardType: TextInputType.number,
+                    cursorColor: Colors.white,
+                    pinTheme: PinTheme(
+                      shape: PinCodeFieldShape.box,
+                      borderRadius: BorderRadius.circular(10.r),
+                      fieldHeight: 42.7.h,
+                      fieldWidth: 36.w,
+                      activeColor: AppColors.white,
+                      selectedColor: AppColors.black,
+                      inactiveColor: AppColors.white,
+                      activeFillColor: Colors.transparent,
+                      selectedFillColor: Colors.transparent,
+                      inactiveFillColor: Colors.transparent,
+                    ),
+                    textStyle: AppStyles.w400s16,
+                  ),
+                ),
+                SizedBox(height: 5.h),
 
                 // Timer
                 Text(
@@ -135,31 +144,19 @@ class _VerifyPageState extends State<VerifyPage> {
                   ),
                 ),
                 SizedBox(height: 32.h),
-
                 // Button
-                SizedBox(
-                  width: double.infinity,
-                  height: 56,
-                  child: ElevatedButton.icon(
-                    onPressed: _openTelegramBot,
-                    icon: SvgPicture.asset(AppIcons.telegram, width: 24.w, height: 24.h,),
-                    label: const Text(
-                      'Kodni olish',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                      ),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF3D3BF3),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      elevation: 0,
-                    ),
-                  ),
+                CustomSvgButton(
+                  title: "Kodni olish",
+                  svg: AppIcons.telegram,
+                  width: 262,
+                  height: 60,
+                  border: 16,
+                  onPressed: () async {
+                    final Uri url = Uri.parse(widget.register.data?.telegramDeepLink ?? '');
+                    await launchUrl(url);
+                  },
                 ),
+
               ],
             ),
           ),

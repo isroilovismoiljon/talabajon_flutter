@@ -10,13 +10,14 @@ class CustomSvgButton extends StatelessWidget {
     this.onPressed = _defaultOnPressed,
     this.width = 290,
     this.height = 45,
+    this.border = 7,
     this.color = AppColors.indigoBlue,
     required this.title,
     required this.svg,
   });
 
   final VoidCallback? onPressed;
-  final int width, height;
+  final double width, height,border;
   final Color color;
   final String title, svg;
 
@@ -31,7 +32,7 @@ class CustomSvgButton extends StatelessWidget {
         height: height.h,
         decoration: BoxDecoration(
           color: color,
-          borderRadius: BorderRadius.circular(7.r),
+          borderRadius: BorderRadius.circular(border.r),
         ),
         child: Row(
           spacing: 10.w,

@@ -9,7 +9,7 @@ import '../../features/splash/pages/select_lang_page.dart';
 import '../../features/splash/pages/splash_page.dart';
 
 final router = GoRouter(
-  initialLocation: Routes.register,
+  initialLocation: Routes.selectLanguage,
 
   routes: <RouteBase>[
     GoRoute(
@@ -34,7 +34,9 @@ final router = GoRouter(
     ),
     GoRoute(
       path: Routes.verify,
-      builder: (context, state) => VerifyPage(),
+      builder: (context, state) => VerifyPage(
+        register: (state.extra as Map)["registerInfo"],
+      ),
     ),
   ],
 );

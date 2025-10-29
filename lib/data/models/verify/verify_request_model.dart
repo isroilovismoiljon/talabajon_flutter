@@ -1,8 +1,8 @@
-class VerifyModel {
+class VerifyRequestModel {
   final int userId;
   final String verificationCode;
 
-  VerifyModel({
+  VerifyRequestModel({
     required this.userId,
     required this.verificationCode,
   });

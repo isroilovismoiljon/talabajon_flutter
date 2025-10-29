@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:talabajon/core/constants/status.dart';
+import 'package:talabajon/core/routing/routes.dart';
 import 'package:talabajon/core/utils/colors.dart';
 import 'package:talabajon/core/utils/styles.dart';
 import 'package:talabajon/features/auth/managers/register/register_state.dart';
@@ -69,77 +71,88 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     final local = MyLocalizations.of(context)!;
 
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(20.w, 118.h, 20.w, 110.h),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(local.create_account, style: AppStyles.w700s24),
-            Text(local.create_account_to_use_app),
-            SizedBox(height: 114.h),
-            Column(
-              spacing: 10.h,
-              children: [
-                CustomTextField(
-                  nameController: nameController,
-                  icon: AppIcons.account,
-                  hintText: local.first_name,
-                ),
-                CustomTextField(
-                  nameController: lastNameController,
-                  icon: AppIcons.account,
-                  hintText: local.last_name,
-                ),
-                CustomTextField(
-                  nameController: usernameController,
-                  icon: AppIcons.userName,
-                  hintText: local.username,
-                ),
-                CustomTextFieldPassword(
-                  controller: passwordController,
-                  icon: AppIcons.password,
-                  hint: local.password,
-                ),
-                CustomTextField(
-                  nameController: referralController,
-                  icon: AppIcons.referal,
-                  hintText: local.referal_id,
-                ),
-              ],
+    return BlocListener<RegisterBloc, RegisterState>(
+      listener: (context, state) {
+        if (state.registerStatus == Status.success) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text("code: ${state.register?.data?.telegramDeepLink}"),
             ),
-            SizedBox(height: 20.h),
-
-            BlocBuilder<RegisterBloc, RegisterState>(
-              builder: (context, state) => CustomButton(
-                title: state.registerStatus == Status.loading ? "Loading..." : local.create_account,
-                color: AppColors.indigoBlue,
-                onPressed: isFormValid
-                    ? () {
-                        context.read<RegisterBloc>().add(
-                          RegisterPostEvent(
-                            RegisterRequestModel(
-                              username: usernameController.text.trim(),
-                              firstName: nameController.text.trim(),
-                              lastName: lastNameController.text.trim(),
-                              password: passwordController.text.trim(),
-                              referralId: referralController.text.trim().isEmpty ? null : int.tryParse(referralController.text.trim()),
-                            ),
-                          ),
-                        );
-                        ScaffoldMessenger.of(
-                          context,
-                        ).showSnackBar(
-                          SnackBar(
-                            content: Text("success: ${state.register ?? 'No data'}"),
-                          ),
-                        );
-                      }
-                    : null,
+          );
+          context.go(Routes.verify, extra: {"registerInfo": state.register});
+        }else if (state.registerStatus == Status.error) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text("code: ${state.errorMessage}"),
+            ),
+          );
+        }
+      },
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: Padding(
+          padding: EdgeInsets.fromLTRB(20.w, 118.h, 20.w, 110.h),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(local.create_account, style: AppStyles.w700s24),
+              Text(local.create_account_to_use_app),
+              SizedBox(height: 114.h),
+              Column(
+                spacing: 10.h,
+                children: [
+                  CustomTextField(
+                    nameController: nameController,
+                    icon: AppIcons.account,
+                    hintText: local.first_name,
+                  ),
+                  CustomTextField(
+                    nameController: lastNameController,
+                    icon: AppIcons.account,
+                    hintText: local.last_name,
+                  ),
+                  CustomTextField(
+                    nameController: usernameController,
+                    icon: AppIcons.userName,
+                    hintText: local.username,
+                  ),
+                  CustomTextFieldPassword(
+                    controller: passwordController,
+                    icon: AppIcons.password,
+                    hint: local.password,
+                  ),
+                  CustomTextField(
+                    nameController: referralController,
+                    icon: AppIcons.referal,
+                    hintText: local.referal_id,
+                  ),
+                ],
               ),
-            ),
-          ],
+              SizedBox(height: 20.h),
+
+              BlocBuilder<RegisterBloc, RegisterState>(
+                builder: (context, state) => CustomButton(
+                  title: state.registerStatus == Status.loading ? "Loading..." : local.create_account,
+                  color: AppColors.indigoBlue,
+                  onPressed: isFormValid
+                      ? () {
+                          context.read<RegisterBloc>().add(
+                            RegisterPostEvent(
+                              RegisterRequestModel(
+                                username: usernameController.text.trim(),
+                                firstName: nameController.text.trim(),
+                                lastName: lastNameController.text.trim(),
+                                password: passwordController.text.trim(),
+                                referralId: referralController.text.trim().isEmpty ? null : int.tryParse(referralController.text.trim()),
+                              ),
+                            ),
+                          );
+                        }
+                      : null,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

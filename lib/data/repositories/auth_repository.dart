@@ -1,9 +1,11 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:talabajon/data/models/auth/register_response_model.dart';
+import 'package:talabajon/data/models/verify/verify_response_model.dart';
 
 import '../../core/network/client.dart';
 import '../../core/utils/result.dart';
 import '../models/auth/register_request_model.dart';
+import '../models/verify/verify_request_model.dart';
 
 class AuthRepository {
   final ApiClientStudent _client;
@@ -22,12 +24,29 @@ class AuthRepository {
     );
     return result.fold(
       (error) {
-        print("error: ${error}");
+        // print("error: ${error}");
         return Result.error(error);
       },
       (value) async {
-        print("succes: ${value}");
+        // print("succes: ${value}");
         return Result.ok(RegisterResponseModel.fromJson(value));
+      },
+    );
+  }
+
+  Future<Result<VerifyResponseModel>> verify(VerifyRequestModel model) async {
+    var result = await _client.post<Map<String, dynamic>>(
+      '/Auth/verify',
+      data: model.toJson(),
+    );
+    return result.fold(
+      (error) {
+        // print("error: ${error}");
+        return Result.error(error);
+      },
+      (value) async {
+        // print("succes: ${value}");
+        return Result.ok(VerifyResponseModel.fromJson(value));
       },
     );
   }

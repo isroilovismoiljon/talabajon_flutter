@@ -27,10 +27,10 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
         ),
       ),
       (success) {
+        print("success : ${success.data?.telegramDeepLink}");
         emit(
           state.copyWith(
             registerStatus: Status.success,
-            telegramDeepLink: success.data?.telegramDeepLink,
             register: success,
           ),
         );

@@ -46,4 +46,14 @@ class AppStyles {
     fontWeight: FontWeight.w600,
     color: AppColors.black,
   );
+  static const w400s16w = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: AppColors.white,
+  );
+  static const w400s16 = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: AppColors.black,
+  );
 }
