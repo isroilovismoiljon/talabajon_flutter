@@ -34,7 +34,9 @@ final router = GoRouter(
     ),
     GoRoute(
       path: Routes.verify,
-      builder: (context, state) => VerifyPage(),
+      builder: (context, state) => VerifyPage(
+        register: (state.extra as Map)["registerInfo"],
+      ),
     ),
   ],
 );

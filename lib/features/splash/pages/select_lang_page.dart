@@ -30,7 +30,7 @@ class SelectLanguagePage extends StatelessWidget {
             SizedBox(height: 20.h),
             CustomSvgButton(
               title: 'Oʻzbek',
-              svg: AppIcons.uzb,
+              svg: AppSvgs.uzb,
               onPressed: () {
                 context.read<LocalizationCubit>().changeLocale(locale: 'uz');
                 context.push(Routes.register);
@@ -39,7 +39,7 @@ class SelectLanguagePage extends StatelessWidget {
 
             CustomSvgButton(
               title: 'Русский',
-              svg: AppIcons.rus,
+              svg: AppSvgs.rus,
               onPressed: () {
                 context.read<LocalizationCubit>().changeLocale(locale: 'ru');
                 context.push(Routes.register);
@@ -48,7 +48,7 @@ class SelectLanguagePage extends StatelessWidget {
 
             CustomSvgButton(
               title: 'English',
-              svg: AppIcons.eng,
+              svg: AppSvgs.eng,
               onPressed: () {
                 context.read<LocalizationCubit>().changeLocale(locale: 'en');
                 context.push(Routes.register);

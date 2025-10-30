@@ -1,53 +1,75 @@
 {
-    "welcome_talabajon": "Welcome to Talabajon",
-        "@welcome_talabajon":{
-            "description":"Bu onboarding title"
-    },
-
-    "please_select_language_for_app": "Please select a language for the app",
-        "@please_select_language_for_app":{
-            "description":"Bu languageni tanlash"
-    },
-
-    "create_account": "Create account",
-        "@create_account":{
-            "description":"Bu register title1"
-    },
-
-    "create_account_to_use_app": "Create an account to use the app",
-        "@create_account_to_use_app":{
-            "description":"Bu register title2"
-    },
-
-    "first_name": "First name",
-        "@first_name":{
-            "description":"Bu textField first name"
-    },
-
-    "last_name": "Last name",
-        "@last_name":{
-            "description":"Bu textFiled last name"
-    },
-
-    "username": "Username",
-        "@username":{
-            "description":"Bu textFiled username"
-    },
-
-    "password": "Password",
-        "@password":{
-            "description":"Bu textFiled password"
-    },
-
-    "create_profile": "Create Profile",
-        "@create_profile":{
-            "description":"Bu register success"
-    },
-
-    "referal_id": "Referal Id (Optional)",
-        "@referal_id":{
-            "description":"Bu textField referal"
-    }
-
+  "welcome_talabajon": "Welcome to Talabajon",
+  "@welcome_talabajon": {
+    "description": "Bu onboarding title"
+  },
+  "please_select_language_for_app": "Please select a language for the app",
+  "@please_select_language_for_app": {
+    "description": "Bu languageni tanlash"
+  },
+  "create_account": "Create account",
+  "@create_account": {
+    "description": "Bu register title1"
+  },
+  "create_account_to_use_app": "Create an account to use the app",
+  "@create_account_to_use_app": {
+    "description": "Bu register title2"
+  },
+  "first_name": "First name",
+  "@first_name": {
+    "description": "Bu textField first name"
+  },
+  "last_name": "Last name",
+  "@last_name": {
+    "description": "Bu textFiled last name"
+  },
+  "username": "Username",
+  "@username": {
+    "description": "Bu textFiled username"
+  },
+  "password": "Password",
+  "@password": {
+    "description": "Bu textFiled password"
+  },
+  "create_profile": "Create Profile",
+  "@create_profile": {
+    "description": "Bu register success"
+  },
+  "referral_id": "Referral Id (Optional)",
+  "@referral_id": {
+    "description": "Bu textField referral"
+  },
+  "enter_the_code": "Enter the code",
+  "@enter_the_code": {
+    "description": "Bu verify title"
+  },
+  "go_to_minute": "Go to the Telegram bot below and\nget your 5-minute code",
+  "@go_to_minute": {
+    "description": "Bu verify ogoxlantirish time"
+  },
+  "get_the_code": "Get the code",
+  "@get_the_code": {
+    "description": "Bu verify title2"
+  },
+  "verification_code_has_been_sent": "Verification code has been sent:",
+  "@verification_code_has_been_sent": {
+    "description": "Bu verify time"
+  },
+  "get_code": "Get code",
+  "@get_code": {
+    "description": "Bu verify success"
+  },
+  "welcome_to_talabajon": "Welcome to Talabajon!",
+  "@welcome_to_talabajon": {
+    "description": "Bu login title"
+  },
+  "log_in_your_account_use_the_app": "Log in to your account\nto use the app",
+  "@log_in_your_account_use_the_app": {
+    "description": "Bu login title2"
+  },
+  "login": "Login",
+  "@login": {
+    "description": "Bu login success"
+  }
 
 }

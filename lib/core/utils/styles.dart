@@ -26,6 +26,16 @@ class AppStyles {
     color: AppColors.black,
     fontFamily: FontFamily.montserrat,
   );
+  static const w600s22w = TextStyle(
+    fontSize: 22,
+    fontWeight: FontWeight.w600,
+    color: AppColors.white,
+  );
+  static const w600s22 = TextStyle(
+    fontSize: 22,
+    fontWeight: FontWeight.w600,
+    color: AppColors.black,
+  );
   static const w600s18w = TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.w600,
@@ -44,6 +54,47 @@ class AppStyles {
   static const w600s16 = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w600,
+    color: AppColors.black,
+  );
+  static const w600s10w = TextStyle(
+    fontSize: 10,
+    fontWeight: FontWeight.w600,
+    color: AppColors.white,
+  );
+  static const w600s10 = TextStyle(
+    fontSize: 10,
+    fontWeight: FontWeight.w600,
+    color: AppColors.black,
+  );
+  static const w500s12w = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    color: AppColors.white,
+  );
+  static const w500s12 = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    color: AppColors.black,
+  );
+
+  static const w400s16w = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: AppColors.white,
+  );
+  static const w400s16 = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: AppColors.black,
+  );
+  static const w400s12w = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+    color: AppColors.white,
+  );
+  static const w400s12 = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
     color: AppColors.black,
   );
 }

@@ -62,11 +62,11 @@ class _CustomTextFieldPasswordState extends State<CustomTextFieldPassword> {
           },
           icon: passw
               ? SvgPicture.asset(
-                  AppIcons.eyeOn,
+                  AppSvgs.eyeOn,
                   colorFilter: ColorFilter.mode(AppColors.black, BlendMode.srcIn),
                 )
               : SvgPicture.asset(
-                  AppIcons.eyeOff,
+                  AppSvgs.eyeOff,
                   colorFilter: ColorFilter.mode(AppColors.black, BlendMode.srcIn),
                 ),
         ),

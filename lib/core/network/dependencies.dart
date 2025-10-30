@@ -10,7 +10,7 @@ final dependencies = <SingleChildWidget> [
   Provider(create: (context) => FlutterSecureStorage()),
   Provider(create: (context) => AuthInterceptor(secureStorage: context.read())),
   Provider(
-    create: (context) => ApiClientStudent(interceptor: context.read(), baseUrl: "http://147.45.142.61/api"),
+    create: (context) => ApiClientStudent(interceptor: context.read(), baseUrl: "http://89.223.126.116/api"),
     // create: (context) => ApiClient(interceptor: context.read(), baseUrl: "http://172.20.10.6:8888/api/v1")
   ),
   Provider(

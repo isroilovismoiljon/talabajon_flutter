@@ -38,5 +38,31 @@ class MyLocalizationsUz extends MyLocalizations {
   String get create_profile => 'Profil yaratish';
 
   @override
-  String get referal_id => 'Referal Id (Ixtiyoriy)';
+  String get referral_id => 'Referal Id (Ixtiyoriy)';
+
+  @override
+  String get enter_the_code => 'Kodni kiriting';
+
+  @override
+  String get go_to_minute =>
+      'Quyidagi Telegram botga kiring va 5 daqiqalik kodingizni oling';
+
+  @override
+  String get get_the_code => 'Kodni oling';
+
+  @override
+  String get verification_code_has_been_sent => 'Tasdiqlash kodi yuborildi:';
+
+  @override
+  String get get_code => 'Kodni olish';
+
+  @override
+  String get welcome_to_talabajon => 'Talabajon ilovasiga xush kelibsiz!';
+
+  @override
+  String get log_in_your_account_use_the_app =>
+      'Ilovadan foydalanish uchun\nhisobingizga kiring';
+
+  @override
+  String get login => 'Kirish';
 }

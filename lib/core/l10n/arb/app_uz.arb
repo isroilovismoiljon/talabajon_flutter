@@ -8,6 +8,14 @@
     "username": "Foydalanuvchi nomi",
     "password": "Parol",
     "create_profile": "Profil yaratish",
-    "referal_id": "Referal Id (Ixtiyoriy)"
+    "referral_id": "Referal Id (Ixtiyoriy)",
+    "enter_the_code": "Kodni kiriting",
+    "go_to_minute": "Quyidagi Telegram botga kiring va 5 daqiqalik kodingizni oling",
+    "get_the_code": "Kodni oling",
+    "verification_code_has_been_sent": "Tasdiqlash kodi yuborildi:",
+    "get_code": "Kodni olish",
+    "welcome_to_talabajon": "Talabajon ilovasiga xush kelibsiz!",
+    "log_in_your_account_use_the_app": "Ilovadan foydalanish uchun\nhisobingizga kiring",
+    "login": "Kirish"
 
 }
