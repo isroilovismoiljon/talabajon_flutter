@@ -73,14 +73,14 @@ class _RegisterPageState extends State<RegisterPage> {
         if (state.registerStatus == Status.success) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text("code: ${state.register?.data?.telegramDeepLink}"),
+              content: Text("code: ${state.register?.data?.telegramDeepLink} ${state.register!.data!.user!.id}"),
             ),
           );
           context.go(Routes.verify, extra: {"registerInfo": state.register});
         }else if (state.registerStatus == Status.error) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text("code: ${state.errorMessage}"),
+              content: Text("error: ${state.errorMessage}"),
             ),
           );
         }
@@ -100,27 +100,27 @@ class _RegisterPageState extends State<RegisterPage> {
                 children: [
                   CustomTextField(
                     nameController: nameController,
-                    icon: AppIcons.account,
+                    icon: AppSvgs.account,
                     hintText: local.first_name,
                   ),
                   CustomTextField(
                     nameController: lastNameController,
-                    icon: AppIcons.account,
+                    icon: AppSvgs.account,
                     hintText: local.last_name,
                   ),
                   CustomTextField(
                     nameController: usernameController,
-                    icon: AppIcons.userName,
+                    icon: AppSvgs.userName,
                     hintText: local.username,
                   ),
                   CustomTextFieldPassword(
                     controller: passwordController,
-                    icon: AppIcons.password,
+                    icon: AppSvgs.password,
                     hint: local.password,
                   ),
                   CustomTextField(
                     nameController: referralController,
-                    icon: AppIcons.referal,
+                    icon: AppSvgs.referal,
                     hintText: local.referral_id,
                   ),
                 ],

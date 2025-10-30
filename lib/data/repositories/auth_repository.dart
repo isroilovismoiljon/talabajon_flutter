@@ -1,5 +1,7 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:talabajon/data/models/auth/register_response_model.dart';
+import 'package:talabajon/data/models/verify/resend_verify_request_model.dart';
+import 'package:talabajon/data/models/verify/resend_verify_response_model.dart';
 import 'package:talabajon/data/models/verify/verify_response_model.dart';
 
 import '../../core/network/client.dart';
@@ -47,6 +49,22 @@ class AuthRepository {
       (value) async {
         // print("succes: ${value}");
         return Result.ok(VerifyResponseModel.fromJson(value));
+      },
+    );
+  }
+  Future<Result<ResendVerifyResponseModel>> resendVerify(ResendVerifyRequestModel model) async {
+    var result = await _client.post<Map<String, dynamic>>(
+      '/Auth/resend-verification-code',
+      data: model.toJson(),
+    );
+    return result.fold(
+      (error) {
+        // print("error: ${error}");
+        return Result.error(error);
+      },
+      (value) async {
+        // print("succes: ${value}");
+        return Result.ok(ResendVerifyResponseModel.fromJson(value));
       },
     );
   }

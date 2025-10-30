@@ -3,6 +3,7 @@ import 'package:provider/single_child_widget.dart';
 import 'package:talabajon/features/auth/managers/verify/verify_bloc.dart';
 
 import '../../features/auth/managers/register/register_bloc.dart';
+import '../../features/auth/managers/resend_verify/resend_verify_bloc.dart';
 
 final blocDependencies = <SingleChildWidget> [
   BlocProvider<RegisterBloc>(
@@ -10,6 +11,9 @@ final blocDependencies = <SingleChildWidget> [
   ),
   BlocProvider<VerifyBloc>(
     create: (context) => VerifyBloc(authRepo: context.read()),
+  ),
+  BlocProvider<ResendVerifyBloc>(
+    create: (context) => ResendVerifyBloc(authRepo: context.read()),
   ),
   // BlocProvider<LoginBloc>(
   //   create: (context) => LoginBloc(authenticationRepository: context.read()),

@@ -18,20 +18,10 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     emit(state.copyWith(registerStatus: Status.loading, errorMessage: null));
     var result = await _authRepo.register(event.data);
     result.fold(
-      (error) => emit(
-        state.copyWith(
-          errorMessage: error.toString(),
-          registerStatus: Status.error,
-        ),
-      ),
+      (error) => emit(state.copyWith(errorMessage: error.toString(), registerStatus: Status.error)),
       (success) {
-        print("success : ${success.data?.telegramDeepLink}");
-        emit(
-          state.copyWith(
-            registerStatus: Status.success,
-            register: success,
-          ),
-        );
+        print("success : ${success.data?.telegramDeepLink} ${success.data?.user?.id}");
+        emit(state.copyWith(registerStatus: Status.success, register: success));
       },
     );
   }

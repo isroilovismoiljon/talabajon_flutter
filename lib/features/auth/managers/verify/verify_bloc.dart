@@ -19,20 +19,8 @@ class VerifyBloc extends Bloc<VerifyEvent, VerifyState> {
     emit(state.copyWith(verifyStatus: Status.loading, errorMessage: null));
     var result = await _authRepo.verify(event.data);
     result.fold(
-      (error) => emit(
-        state.copyWith(
-          errorMessage: error.toString(),
-          verifyStatus: Status.error,
-        ),
-      ),
-      (success) {
-        emit(
-          state.copyWith(
-            verifyStatus: Status.success,
-            verify: success,
-          ),
-        );
-      },
+      (error) => emit(state.copyWith(errorMessage: error.toString(), verifyStatus: Status.error)),
+      (success) => emit(state.copyWith(verifyStatus: Status.success, verify: success)),
     );
   }
 }

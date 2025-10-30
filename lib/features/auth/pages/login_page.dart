@@ -27,6 +27,13 @@ class _LoginPageState extends State<LoginPage> {
     passwordController.dispose();
     super.dispose();
   }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+  //
+  //   },);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -39,15 +46,15 @@ class _LoginPageState extends State<LoginPage> {
 
     switch (currentLocale) {
       case 'ru':
-        flag = AppIcons.rus;
+        flag = AppSvgs.rus;
         label = "RU";
         break;
       case 'en':
-        flag = AppIcons.eng;
+        flag = AppSvgs.eng;
         label = "EN";
         break;
       default:
-        flag = AppIcons.uzb;
+        flag = AppSvgs.uzb;
         label = "UZ";
     }
 
@@ -70,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                   value: 'uz',
                   child: Row(
                     children: [
-                      SvgPicture.asset(AppIcons.uzb, width: 24.w),
+                      SvgPicture.asset(AppSvgs.uzb, width: 24.w),
                       SizedBox(width: 8.w),
                       const Text("Oʻzbek"),
                     ],
@@ -80,7 +87,7 @@ class _LoginPageState extends State<LoginPage> {
                   value: 'ru',
                   child: Row(
                     children: [
-                      SvgPicture.asset(AppIcons.rus, width: 24.w),
+                      SvgPicture.asset(AppSvgs.rus, width: 24.w),
                       SizedBox(width: 8.w),
                       const Text("Русский"),
                     ],
@@ -90,7 +97,7 @@ class _LoginPageState extends State<LoginPage> {
                   value: 'en',
                   child: Row(
                     children: [
-                      SvgPicture.asset(AppIcons.eng, width: 24.w),
+                      SvgPicture.asset(AppSvgs.eng, width: 24.w),
                       SizedBox(width: 8.w),
                       const Text("English"),
                     ],
@@ -128,21 +135,21 @@ class _LoginPageState extends State<LoginPage> {
             ),
             Text(
               local.log_in_your_account_use_the_app,
-              style: AppStyles.w400s10,
+              style: AppStyles.w400s12,
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 6.h),
             Column(
               spacing: 10.h,
               children: [
-                CustomTextField(nameController: usernameController, icon: AppIcons.userName, hintText: local.username),
-                CustomTextField(nameController: passwordController, icon: AppIcons.password, hintText: local.password),
+                CustomTextField(nameController: usernameController, icon: AppSvgs.userName, hintText: local.username),
+                CustomTextField(nameController: passwordController, icon: AppSvgs.password, hintText: local.password),
               ],
             ),
             SizedBox(height: 10.h),
             CustomSvgButton(
               title: local.login,
-              svg: AppIcons.logout,
+              svg: AppSvgs.logout,
               width: 390,
               height: 60,
             ),
