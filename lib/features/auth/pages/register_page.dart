@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -71,11 +72,11 @@ class _RegisterPageState extends State<RegisterPage> {
     return BlocListener<RegisterBloc, RegisterState>(
       listener: (context, state) {
         if (state.registerStatus == Status.success) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text("code: ${state.register?.data?.telegramDeepLink} ${state.register!.data!.user!.id}"),
-            ),
-          );
+          // ScaffoldMessenger.of(context).showSnackBar(
+          //   SnackBar(
+          //     content: Text("code: ${state.register?.data?.telegramDeepLink} ${state.register!.data!.user!.id}"),
+          //   ),
+          // );
           context.go(Routes.verify, extra: {"registerInfo": state.register});
         }else if (state.registerStatus == Status.error) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -99,17 +100,17 @@ class _RegisterPageState extends State<RegisterPage> {
                 spacing: 10.h,
                 children: [
                   CustomTextField(
-                    nameController: nameController,
+                    controller: nameController,
                     icon: AppSvgs.account,
                     hintText: local.first_name,
                   ),
                   CustomTextField(
-                    nameController: lastNameController,
+                    controller: lastNameController,
                     icon: AppSvgs.account,
                     hintText: local.last_name,
                   ),
                   CustomTextField(
-                    nameController: usernameController,
+                    controller: usernameController,
                     icon: AppSvgs.userName,
                     hintText: local.username,
                   ),
@@ -119,7 +120,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     hint: local.password,
                   ),
                   CustomTextField(
-                    nameController: referralController,
+                    controller: referralController,
                     icon: AppSvgs.referal,
                     hintText: local.referral_id,
                   ),
@@ -145,6 +146,27 @@ class _RegisterPageState extends State<RegisterPage> {
                           );
                         }
                       : null,
+                ),
+              ),
+              SizedBox(height: 30.h),
+              Center(
+                child: RichText(
+                  text: TextSpan(
+                    style: AppStyles.w400s12,
+                    children: [
+                      TextSpan(
+                        text: "Already have an account? ",
+                      ),
+                      TextSpan(
+                        text: "Login",
+                        style: AppStyles.w500s12.copyWith(color: AppColors.indigoBlue),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            context.go(Routes.login);
+                          },
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

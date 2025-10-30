@@ -1,39 +1,30 @@
-class RegisterResponseModel {
+class AuthResponseModel {
   final bool success;
   final String? message;
   final DateTime? timestamp;
-  final RegisterDataModel? data;
+  final AuthDataModel? data;
 
-  RegisterResponseModel({
+  AuthResponseModel({
     required this.success,
     this.message,
     this.timestamp,
     this.data,
   });
 
-  factory RegisterResponseModel.fromJson(Map<String, dynamic> json) {
-    return RegisterResponseModel(
+  factory AuthResponseModel.fromJson(Map<String, dynamic> json) {
+    return AuthResponseModel(
       success: json['success'] ?? false,
       message: json['message'],
-      timestamp: json['timestamp'] != null
-          ? DateTime.tryParse(json['timestamp'])
-          : null,
-      data: json['data'] != null ? RegisterDataModel.fromJson(json['data']) : null,
+      timestamp: json['timestamp'] != null ? DateTime.tryParse(json['timestamp']) : null,
+      data: json['data'] != null ? AuthDataModel.fromJson(json['data']) : null,
     );
   }
-
-  Map<String, dynamic> toJson() => {
-    'success': success,
-    'message': message,
-    'timestamp': timestamp?.toIso8601String(),
-    'data': data?.toJson(),
-  };
 }
 
-class RegisterDataModel {
+class AuthDataModel {
   final bool? success;
   final String? message;
-  final RegisterUserModel? user;
+  final AuthUserModel? user;
   final String? token;
   final String? refreshToken;
   final String? tokenExpiry;
@@ -41,7 +32,7 @@ class RegisterDataModel {
   final String? telegramDeepLink;
   final bool? requiresVerification;
 
-  RegisterDataModel({
+  AuthDataModel({
     this.success,
     this.message,
     this.user,
@@ -53,11 +44,11 @@ class RegisterDataModel {
     this.requiresVerification,
   });
 
-  factory RegisterDataModel.fromJson(Map<String, dynamic> json) {
-    return RegisterDataModel(
+  factory AuthDataModel.fromJson(Map<String, dynamic> json) {
+    return AuthDataModel(
       success: json['success'],
       message: json['message'],
-      user: json['user'] != null ? RegisterUserModel.fromJson(json['user']) : null,
+      user: json['user'] != null ? AuthUserModel.fromJson(json['user']) : null,
       token: json['token'],
       refreshToken: json['refreshToken'],
       tokenExpiry: json['tokenExpiry'],
@@ -66,21 +57,9 @@ class RegisterDataModel {
       requiresVerification: json['requiresVerification'],
     );
   }
-
-  Map<String, dynamic> toJson() => {
-    'success': success,
-    'message': message,
-    'user': user?.toJson(),
-    'token': token,
-    'refreshToken': refreshToken,
-    'tokenExpiry': tokenExpiry,
-    'verificationCode': verificationCode,
-    'telegramDeepLink': telegramDeepLink,
-    'requiresVerification': requiresVerification,
-  };
 }
 
-class RegisterUserModel {
+class AuthUserModel {
   final int? id;
   final String? firstName;
   final String? lastName;
@@ -94,7 +73,7 @@ class RegisterUserModel {
   final DateTime? createdAt;
   final DateTime? updatedAt;
 
-  RegisterUserModel({
+  AuthUserModel({
     this.id,
     this.firstName,
     this.lastName,
@@ -109,8 +88,8 @@ class RegisterUserModel {
     this.updatedAt,
   });
 
-  factory RegisterUserModel.fromJson(Map<String, dynamic> json) {
-    return RegisterUserModel(
+  factory AuthUserModel.fromJson(Map<String, dynamic> json) {
+    return AuthUserModel(
       id: json['id'],
       firstName: json['firstName'],
       lastName: json['lastName'],
@@ -121,27 +100,8 @@ class RegisterUserModel {
       balance: (json['balance'] as num?)?.toDouble(),
       userRole: json['userRole'],
       referralId: json['referralId'],
-      createdAt: json['createdAt'] != null
-          ? DateTime.tryParse(json['createdAt'])
-          : null,
-      updatedAt: json['updatedAt'] != null
-          ? DateTime.tryParse(json['updatedAt'])
-          : null,
+      createdAt: json['createdAt'] != null ? DateTime.tryParse(json['createdAt']) : null,
+      updatedAt: json['updatedAt'] != null ? DateTime.tryParse(json['updatedAt']) : null,
     );
   }
-
-  Map<String, dynamic> toJson() => {
-    'id': id,
-    'firstName': firstName,
-    'lastName': lastName,
-    'username': username,
-    'phoneNumber': phoneNumber,
-    'telegramId': telegramId,
-    'photo': photo,
-    'balance': balance,
-    'userRole': userRole,
-    'referralId': referralId,
-    'createdAt': createdAt?.toIso8601String(),
-    'updatedAt': updatedAt?.toIso8601String(),
-  };
 }

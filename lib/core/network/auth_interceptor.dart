@@ -35,7 +35,7 @@ class AuthInterceptor extends Interceptor {
       if (login == null || password == null) await logout();
 
       var result = await dio.post('auth/login', data: {'login': login, 'password': password});
-      String? token = result.data['accessToken'];
+      String? token = result.data['token'];
 
       if (result.statusCode != 200 || token == null) await logout();
 

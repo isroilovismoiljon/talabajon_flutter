@@ -4,7 +4,9 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:talabajon/data/models/auth/register_response_model.dart';
+import 'package:talabajon/core/utils/colors.dart';
+import 'package:talabajon/core/utils/styles.dart';
+import 'package:talabajon/data/models/auth/auth_response_model.dart';
 import 'package:talabajon/data/models/verify/resend_verify_request_model.dart';
 import 'package:talabajon/data/models/verify/verify_request_model.dart';
 import 'package:talabajon/features/auth/managers/resend_verify/resend_verify_bloc.dart';
@@ -22,7 +24,7 @@ import '../../../core/routing/routes.dart';
 import '../widgets/verify_widget.dart';
 
 class VerifyPage extends StatefulWidget {
-  final RegisterResponseModel register;
+  final AuthResponseModel register;
 
   const VerifyPage({
     super.key,
@@ -123,19 +125,13 @@ class _VerifyPageState extends State<VerifyPage> {
                 });
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text(
-                      xabar,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
+                    content: Text(xabar, style: AppStyles.w600s18),
                     behavior: SnackBarBehavior.floating,
                     margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(14),
                     ),
-                    backgroundColor: Colors.green.shade600,
+                    backgroundColor: AppColors.neonGreen,
                     duration: const Duration(seconds: 5),
                   ),
                 );

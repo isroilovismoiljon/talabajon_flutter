@@ -6,19 +6,19 @@ import 'package:talabajon/core/utils/colors.dart';
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
     super.key,
-    required this.nameController,
+    required this.controller,
     required this.icon,
     required this.hintText,
   });
 
-  final TextEditingController nameController;
+  final TextEditingController controller;
   final String icon;
   final String hintText;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: nameController,
+      controller: controller,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.all(20),
         prefixIcon: SizedBox(

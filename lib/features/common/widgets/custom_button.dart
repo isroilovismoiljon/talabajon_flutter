@@ -11,7 +11,7 @@ class CustomButton extends StatelessWidget {
     this.width = 390,
     this.height = 62,
     required this.title,
-    this.color = AppColors.black,
+    this.color = AppColors.indigoBlue,
     this.style = AppStyles.w600s18w,
     this.border = false,
   });

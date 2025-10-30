@@ -1,11 +1,11 @@
 import 'package:equatable/equatable.dart';
-import 'package:talabajon/data/models/auth/register_response_model.dart';
+import 'package:talabajon/data/models/auth/auth_response_model.dart';
 import '../../../../core/constants/status.dart';
 
 class RegisterState extends Equatable {
   final Status registerStatus;
   final String? errorMessage;
-  final RegisterResponseModel? register;
+  final AuthResponseModel? register;
 
   const RegisterState({
     required this.registerStatus,
@@ -22,7 +22,7 @@ class RegisterState extends Equatable {
   RegisterState copyWith({
     Status? registerStatus,
     String? errorMessage,
-    RegisterResponseModel? register,
+    AuthResponseModel? register,
   }) {
     return RegisterState(
       registerStatus: registerStatus ?? this.registerStatus,

@@ -44,9 +44,7 @@ class _VerifyWidgetState extends State<VerifyWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final timerText = widget.secondsRemaining > 0
-        ? "0:${widget.secondsRemaining.toString().padLeft(2, '0')}"
-        : "Resend code";
+    final timerText = widget.secondsRemaining > 0 ? "0:${widget.secondsRemaining.toString().padLeft(2, '0')}" : "Resend code";
 
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 44.w, vertical: 17.h),
@@ -145,14 +143,9 @@ class _VerifyWidgetState extends State<VerifyWidget> {
                 TextSpan(
                   text: "  $timerText",
                   style: AppStyles.w600s10.copyWith(
-                    decoration: widget.secondsRemaining > 0
-                        ? null
-                        : TextDecoration.underline,
+                    decoration: widget.secondsRemaining > 0 ? null : TextDecoration.underline,
                   ),
-                  recognizer: TapGestureRecognizer()
-                    ..onTap = widget.secondsRemaining > 0
-                        ? null
-                        : widget.onResendTap,
+                  recognizer: TapGestureRecognizer()..onTap = widget.secondsRemaining > 0 ? null : widget.onResendTap,
                 ),
               ],
             ),
@@ -164,12 +157,14 @@ class _VerifyWidgetState extends State<VerifyWidget> {
             width: 262,
             height: 60,
             border: 16,
-            onPressed: () async {
-              if (widget.telegramLink != null) {
-                final Uri url = Uri.parse(widget.telegramLink!);
-                await launchUrl(url);
-              }
-            },
+            onPressed: widget.secondsRemaining > 0
+                ? () async {
+                    if (widget.telegramLink != null) {
+                      final Uri url = Uri.parse(widget.telegramLink!);
+                      await launchUrl(url);
+                    }
+                  }
+                : null,
           ),
         ],
       ),

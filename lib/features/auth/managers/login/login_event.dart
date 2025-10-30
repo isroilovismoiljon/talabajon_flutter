@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart';
+import 'package:talabajon/data/models/auth/login_request_model.dart';
 
-class LoginEvent extends StatelessWidget {
-  const LoginEvent({Key? key}) : super(key: key);
+sealed class LoginEvent {}
 
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
+final class LoginPostEvent extends LoginEvent {
+  final LoginRequestModel data;
+
+  LoginPostEvent(this.data);
 }

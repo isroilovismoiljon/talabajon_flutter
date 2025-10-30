@@ -1,5 +1,6 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:talabajon/data/models/auth/register_response_model.dart';
+import 'package:talabajon/data/models/auth/auth_response_model.dart';
+import 'package:talabajon/data/models/auth/login_request_model.dart';
 import 'package:talabajon/data/models/verify/resend_verify_request_model.dart';
 import 'package:talabajon/data/models/verify/resend_verify_response_model.dart';
 import 'package:talabajon/data/models/verify/verify_response_model.dart';
@@ -19,7 +20,7 @@ class AuthRepository {
   }) : _client = client,
        _secureStorage = secureStorage;
 
-  Future<Result<RegisterResponseModel>> register(RegisterRequestModel model) async {
+  Future<Result<AuthResponseModel>> register(RegisterRequestModel model) async {
     var result = await _client.post<Map<String, dynamic>>(
       '/Auth/register',
       data: model.toJson(),
@@ -31,7 +32,24 @@ class AuthRepository {
       },
       (value) async {
         // print("succes: ${value}");
-        return Result.ok(RegisterResponseModel.fromJson(value));
+        return Result.ok(AuthResponseModel.fromJson(value));
+      },
+    );
+  }
+
+  Future<Result<AuthResponseModel>> login(LoginRequestModel model) async {
+    var result = await _client.post<Map<String, dynamic>>(
+      '/Auth/login',
+      data: model.toJson(),
+    );
+    return result.fold(
+      (error) {
+        return Result.error(error);
+      },
+      (value) async {
+        // print("token: ${ value["data"]?["token"]}");
+        _secureStorage.write(key: "token", value:  value["data"]?["token"]);
+        return Result.ok(AuthResponseModel.fromJson(value));
       },
     );
   }
@@ -52,6 +70,7 @@ class AuthRepository {
       },
     );
   }
+
   Future<Result<ResendVerifyResponseModel>> resendVerify(ResendVerifyRequestModel model) async {
     var result = await _client.post<Map<String, dynamic>>(
       '/Auth/resend-verification-code',
