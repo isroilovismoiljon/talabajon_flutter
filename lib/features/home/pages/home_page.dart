@@ -57,7 +57,16 @@ class HomePage extends StatelessWidget {
                                     Clipboard.setData(ClipboardData(text: "1234567"));
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
-                                        content: Text("Matn vaqtincha xotiraga nusxalandi ✅"),
+                                        content: Row(
+                                          spacing: 5,
+                                          children: [
+                                            SvgPicture.asset(
+                                              AppSvgs.copy,
+                                              colorFilter: ColorFilter.mode(AppColors.hintText, BlendMode.srcIn),
+                                            ),
+                                            Text("Matn vaqtincha xotiraga nusxalandi ✅"),
+                                          ],
+                                        ),
                                         behavior: SnackBarBehavior.floating,
                                         margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                                         shape: RoundedRectangleBorder(

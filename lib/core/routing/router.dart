@@ -4,12 +4,13 @@ import 'package:talabajon/features/auth/pages/login_page.dart';
 import 'package:talabajon/features/auth/pages/register_page.dart';
 import 'package:talabajon/features/auth/pages/verify_page.dart';
 import 'package:talabajon/features/home/pages/home_page.dart';
+import 'package:talabajon/features/profile/pages/edit_profile_page.dart';
 
 import '../../features/splash/pages/select_lang_page.dart';
 import '../../features/splash/pages/splash_page.dart';
 
 final router = GoRouter(
-  initialLocation: Routes.register,
+  initialLocation: Routes.splash,
 
   routes: <RouteBase>[
     GoRoute(
@@ -19,6 +20,10 @@ final router = GoRouter(
     GoRoute(
       path: Routes.home,
       builder: (context, state) => HomePage(),
+    ),
+    GoRoute(
+      path: Routes.editProfile,
+      builder: (context, state) => EditProfilePage(),
     ),
     GoRoute(
       path: Routes.selectLanguage,
