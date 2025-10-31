@@ -6,7 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:talabajon/core/constants/status.dart';
 import 'package:talabajon/core/routing/routes.dart';
-import 'package:talabajon/core/utils/icons.dart';
+import 'package:talabajon/core/utils/svgs.dart';
 import 'package:talabajon/core/utils/styles.dart';
 import 'package:talabajon/data/models/auth/login_request_model.dart';
 import 'package:talabajon/features/auth/managers/login/login_bloc.dart';

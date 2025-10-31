@@ -4,7 +4,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:talabajon/core/routing/routes.dart';
 import 'package:talabajon/core/utils/colors.dart';
-import 'package:talabajon/core/utils/icons.dart';
+import 'package:talabajon/core/utils/svgs.dart';
 import 'package:talabajon/core/utils/styles.dart';
 
 class SplashPage extends StatefulWidget {

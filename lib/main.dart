@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(430, 932),
+      ensureScreenSize: true,
       builder: (context, child) => MultiRepositoryProvider(
         providers: dependencies,
         child: MultiBlocProvider(

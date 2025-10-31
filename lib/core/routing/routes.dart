@@ -1,5 +1,3 @@
-import 'package:talabajon/features/profile/pages/edit_profile_page.dart';
-
 class Routes {
   static const splash = "/splash";
   static const selectLanguage = "/select-language";

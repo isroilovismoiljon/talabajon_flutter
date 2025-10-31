@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:talabajon/core/utils/colors.dart';
-import 'package:talabajon/core/utils/icons.dart';
+import 'package:talabajon/core/utils/svgs.dart';
 import 'package:talabajon/core/utils/styles.dart';
 import 'package:talabajon/features/home/widgets/service_button.dart';
 import 'package:talabajon/features/home/widgets/small_svg_button.dart';

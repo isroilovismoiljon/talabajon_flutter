@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../core/utils/colors.dart';
-import '../../../../core/utils/icons.dart';
+import '../../../../core/utils/svgs.dart';
 import '../../../../core/utils/styles.dart';
 import '../../../../features/common/widgets/custom_svg_button.dart';
 

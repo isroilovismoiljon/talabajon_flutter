@@ -13,7 +13,7 @@ import 'package:talabajon/features/auth/widgets/custom_text_field_password.dart'
 import 'package:talabajon/features/common/widgets/custom_button.dart';
 
 import '../../../core/l10n/app_localizations.dart';
-import '../../../core/utils/icons.dart';
+import '../../../core/utils/svgs.dart';
 import '../../../data/models/auth/register_request_model.dart';
 import '../managers/register/register_bloc.dart';
 import '../managers/register/register_event.dart';

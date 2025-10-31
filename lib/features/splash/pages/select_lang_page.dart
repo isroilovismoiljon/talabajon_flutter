@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:talabajon/core/routing/routes.dart';
 import 'package:talabajon/core/utils/styles.dart';
-import 'package:talabajon/core/utils/icons.dart';
+import 'package:talabajon/core/utils/svgs.dart';
 import 'package:talabajon/features/common/managers/localizatoin_cubit.dart';
 import 'package:talabajon/features/common/widgets/custom_svg_button.dart';
 
