@@ -13,7 +13,7 @@ class AuthResponseModel {
 
   factory AuthResponseModel.fromJson(Map<String, dynamic> json) {
     return AuthResponseModel(
-      success: json['success'] ?? false,
+      success: json['success'],
       message: json['message'],
       timestamp: json['timestamp'] != null ? DateTime.tryParse(json['timestamp']) : null,
       data: json['data'] != null ? AuthDataModel.fromJson(json['data']) : null,
