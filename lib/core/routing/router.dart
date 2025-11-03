@@ -4,12 +4,16 @@ import 'package:talabajon/features/auth/pages/login_page.dart';
 import 'package:talabajon/features/auth/pages/register_page.dart';
 import 'package:talabajon/features/auth/pages/verify_page.dart';
 import 'package:talabajon/features/home/pages/home_page.dart';
+import 'package:talabajon/features/profile/pages/profile_page.dart';
+import 'package:talabajon/features/service/pages/create_presentation_pages.dart';
+import 'package:talabajon/features/setting/pages/introduction_app_page.dart';
 
+import '../../features/setting/pages/setting_page.dart';
 import '../../features/splash/pages/select_lang_page.dart';
 import '../../features/splash/pages/splash_page.dart';
 
 final router = GoRouter(
-  initialLocation: Routes.register,
+  initialLocation: Routes.splash,
 
   routes: <RouteBase>[
     GoRoute(
@@ -19,6 +23,22 @@ final router = GoRouter(
     GoRoute(
       path: Routes.home,
       builder: (context, state) => HomePage(),
+    ),
+    GoRoute(
+      path: Routes.createPresentation,
+      builder: (context, state) => CreatePresentationPage(),
+    ),
+    GoRoute(
+      path: Routes.settings,
+      builder: (context, state) => SettingPage(),
+    ),
+    GoRoute(
+      path: Routes.profile,
+      builder: (context, state) => ProfilePage(),
+    ),
+    GoRoute(
+      path: Routes.introductionApp,
+      builder: (context, state) => IntroductionAppPage(),
     ),
     GoRoute(
       path: Routes.selectLanguage,

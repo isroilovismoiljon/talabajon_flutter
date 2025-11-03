@@ -1,14 +1,12 @@
 import 'dart:async';
-import 'package:flutter/gestures.dart';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:talabajon/core/utils/colors.dart';
-import 'package:talabajon/core/utils/icons.dart';
 import 'package:talabajon/core/utils/styles.dart';
-import 'package:talabajon/data/models/auth/register_response_model.dart';
+import 'package:talabajon/data/models/auth/auth_response_model.dart';
 import 'package:talabajon/data/models/verify/resend_verify_request_model.dart';
 import 'package:talabajon/data/models/verify/verify_request_model.dart';
 import 'package:talabajon/features/auth/managers/resend_verify/resend_verify_bloc.dart';
@@ -17,17 +15,16 @@ import 'package:talabajon/features/auth/managers/resend_verify/resend_verify_sta
 import 'package:talabajon/features/auth/managers/verify/verify_bloc.dart';
 import 'package:talabajon/features/auth/managers/verify/verify_event.dart';
 import 'package:talabajon/features/auth/managers/verify/verify_state.dart';
-import 'package:talabajon/features/common/widgets/custom_svg_button.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/constants/status.dart';
 import '../../../core/l10n/app_localizations.dart';
 import '../../../core/routing/routes.dart';
+import '../widgets/verify_widget.dart';
 
 class VerifyPage extends StatefulWidget {
-  final RegisterResponseModel register;
+  final AuthResponseModel register;
 
   const VerifyPage({
     super.key,
@@ -39,7 +36,7 @@ class VerifyPage extends StatefulWidget {
 }
 
 class _VerifyPageState extends State<VerifyPage> {
-  int secondsRemaining = 56;
+  int secondsRemaining = 59;
   Timer? timer;
   String kod = "";
   bool? isCodeCorrect;
@@ -128,20 +125,14 @@ class _VerifyPageState extends State<VerifyPage> {
                 });
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text(
-                      xabar,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
+                    content: Text(xabar, style: AppStyles.w600s18),
                     behavior: SnackBarBehavior.floating,
                     margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(14),
                     ),
-                    backgroundColor: Colors.green.shade600,
-                    duration: const Duration(seconds: 2),
+                    backgroundColor: AppColors.neonGreen,
+                    duration: const Duration(seconds: 5),
                   ),
                 );
               } else {
@@ -151,7 +142,7 @@ class _VerifyPageState extends State<VerifyPage> {
                     message: xabar,
                   ),
                   animationDuration: const Duration(milliseconds: 600),
-                  displayDuration: const Duration(seconds: 3),
+                  displayDuration: const Duration(seconds: 5),
                 );
               }
             }
@@ -159,149 +150,55 @@ class _VerifyPageState extends State<VerifyPage> {
         ),
       ],
       child: Scaffold(
-        backgroundColor: Colors.grey,
-        body: Center(
-          child: SingleChildScrollView(
-            child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 44.w, vertical: 17.h),
-              padding: EdgeInsets.all(32.r),
-              decoration: BoxDecoration(
-                color: AppColors.border,
-                borderRadius: BorderRadius.circular(30.r),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SizedBox(
-                    width: 166.w,
-                    height: 165.h,
-                    child: Image.asset("assets/photos/mail.png"),
-                  ),
-                  SizedBox(height: 11.5.h),
-                  Text(
-                    local.enter_the_code,
-                    style: const TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xFF1A1A1A),
-                    ),
-                  ),
-                  SizedBox(height: 12.h),
-                  Text(
-                    local.go_to_minute,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontSize: 15,
-                      color: Color(0xFF666666),
-                      height: 1.5,
-                    ),
-                  ),
-                  SizedBox(height: 24.h),
-                  Text(
-                    local.get_the_code,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xFF1A1A1A),
-                    ),
-                  ),
-                  SizedBox(height: 16.h),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 46.w),
-                    child: PinCodeTextField(
-                      appContext: context,
-                      length: 4,
-                      onChanged: (val) {
-                        setState(() {
-                          kod = val;
-                          isCodeCorrect = null;
-                        });
-                      },
-                      onCompleted: (enteredCode) {
-                        final correctCode = verificationCode;
-                        setState(() {
-                          isCodeCorrect = enteredCode == correctCode;
-                        });
-                        if (isCodeCorrect == true) {
-                          context.read<VerifyBloc>().add(
-                            VerifyPostEvent(
-                              VerifyRequestModel(
-                                userId: widget.register.data!.user!.id!,
-                                verificationCode: enteredCode,
-                              ),
-                            ),
-                          );
-                        }
-                      },
-                      autoFocus: true,
-                      keyboardType: TextInputType.number,
-                      cursorColor: Colors.white,
-                      pinTheme: PinTheme(
-                        shape: PinCodeFieldShape.box,
-                        borderRadius: BorderRadius.circular(10.r),
-                        fieldHeight: 42.7.h,
-                        fieldWidth: 36.w,
-                        activeColor: isCodeCorrect == null
-                            ? AppColors.white
-                            : isCodeCorrect == true
-                            ? Colors.green
-                            : Colors.red,
-                        selectedColor: AppColors.black,
-                        inactiveColor: AppColors.white,
-                        activeFillColor: Colors.transparent,
-                        selectedFillColor: Colors.transparent,
-                        inactiveFillColor: Colors.transparent,
-                      ),
-                      textStyle: AppStyles.w400s16,
-                    ),
-                  ),
-                  SizedBox(height: 5.h),
-                  RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: local.verification_code_has_been_sent,
-                          style: AppStyles.w400s12,
-                        ),
-                        TextSpan(
-                          text: secondsRemaining > 0 ? "  $timerText" : "  Resend code",
-                          style: AppStyles.w600s10.copyWith(
-                            decoration: secondsRemaining > 0 ? null : TextDecoration.underline,
-                          ),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = secondsRemaining > 0
-                                ? null
-                                : () {
-                                    context.read<ResendVerifyBloc>().add(
-                                      ResendVerifyPostEvent(
-                                        ResendVerifyRequestModel(
-                                          userId: widget.register.data!.user!.id!,
-                                        ),
-                                      ),
-                                    );
-                                  },
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 32.h),
-                  CustomSvgButton(
-                    title: local.get_code,
-                    svg: AppSvgs.telegram,
-                    width: 262,
-                    height: 60,
-                    border: 16,
-                    onPressed: () async {
-                      if (telegramLink != null) {
-                        final Uri url = Uri.parse(telegramLink!);
-                        await launchUrl(url);
-                      }
-                    },
-                  ),
-                ],
+        body: Stack(
+          fit: StackFit.expand,
+          children: [
+            Image.asset(
+              "assets/photos/img.png",
+              fit: BoxFit.cover,
+            ),
+            BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+              child: Container(
+                width: double.infinity,
+                height: double.infinity,
+                color: Colors.black.withValues(alpha: 0.5),
               ),
             ),
-          ),
+            Center(
+              child: SingleChildScrollView(
+                child: VerifyWidget(
+                  enterTheCode: local.enter_the_code,
+                  goToMinute: local.go_to_minute,
+                  getTheCode: local.get_the_code,
+                  verificationCodeHasBeenSent: local.verification_code_has_been_sent,
+                  getCodeTitle: local.get_code,
+                  secondsRemaining: secondsRemaining,
+                  verificationCode: verificationCode,
+                  telegramLink: telegramLink,
+                  onResendTap: () {
+                    context.read<ResendVerifyBloc>().add(
+                      ResendVerifyPostEvent(
+                        ResendVerifyRequestModel(
+                          userId: widget.register.data!.user!.id!,
+                        ),
+                      ),
+                    );
+                  },
+                  onVerifyCode: (enteredCode) {
+                    context.read<VerifyBloc>().add(
+                      VerifyPostEvent(
+                        VerifyRequestModel(
+                          userId: widget.register.data!.user!.id!,
+                          verificationCode: enteredCode,
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

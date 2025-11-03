@@ -1,0 +1,43 @@
+class AppSvgs {
+  static const splash = "assets/icons/splash_book.svg";
+  static const uzb = "assets/icons/uzb.svg";
+  static const rus = "assets/icons/rus.svg";
+  static const eng = "assets/icons/eng.svg";
+  static const account = "assets/icons/account.svg";
+  static const telegram = "assets/icons/telegram.svg";
+  static const password = "assets/icons/password.svg";
+  static const userName = "assets/icons/user_name.svg";
+  static const referral = "assets/icons/referal.svg";
+  static const eyeOn = "assets/icons/eye-on.svg";
+  static const eyeOff = "assets/icons/eye-off.svg";
+  static const login = "assets/icons/login.svg";
+  static const cancel = "assets/icons/cancel.svg";
+  static const copy = "assets/icons/copy.svg";
+  static const notification = "assets/icons/notification.svg";
+  static const search = "assets/icons/search.svg";
+  static const share = "assets/icons/share.svg";
+  static const powerPoint = "assets/icons/power_point.svg";
+  static const word = "assets/icons/word.svg";
+  static const rightArrow = "assets/icons/right_arrow.svg";
+  static const homeOn = "assets/icons/home_on.svg";
+  static const homeOff = "assets/icons/home_off.svg";
+  static const walletOn = "assets/icons/wallet_on.svg";
+  static const walletOff = "assets/icons/wallet_off.svg";
+  static const userOn = "assets/icons/user_on.svg";
+  static const userOff = "assets/icons/user_off.svg";
+  static const analysisOn = "assets/icons/analysis_on.svg";
+  static const analysisOff = "assets/icons/analysis_off.svg";
+  static const profile = "assets/icons/profile.svg";
+  static const introduction = "assets/icons/introduction.svg";
+  static const contact = "assets/icons/contact.svg";
+  static const language = "assets/icons/language.svg";
+  static const about = "assets/icons/about.svg";
+  static const logout = "assets/icons/logout.svg";
+  static const phone = "assets/icons/phone.svg";
+  static const backArrow = "assets/icons/back_arrow.svg";
+  static const chat = "assets/icons/chat.svg";
+  static const minus = "assets/icons/minus.svg";
+  static const plus = "assets/icons/plus.svg";
+  static const template = "assets/icons/template.svg";
+
+}

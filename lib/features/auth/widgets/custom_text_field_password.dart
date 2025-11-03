@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:talabajon/core/utils/icons.dart';
+import 'package:talabajon/core/utils/svgs.dart';
 
 import '../../../core/utils/colors.dart';
 
@@ -38,6 +38,8 @@ class _CustomTextFieldPasswordState extends State<CustomTextFieldPassword> {
           child: Center(
             child: SvgPicture.asset(
               widget.icon,
+              width: 24.w,
+              height: 24.h,
             ),
           ),
         ),

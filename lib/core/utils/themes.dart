@@ -16,8 +16,7 @@ class AppThemes {
       onSurface: AppColors.dark,
     ),
 
-    textTheme: TextTheme(
-    ),
+    textTheme: TextTheme(),
 
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.light,
@@ -42,8 +41,7 @@ class AppThemes {
       onSurface: AppColors.light,
     ),
 
-    textTheme: TextTheme(
-    ),
+    textTheme: TextTheme(),
 
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.dark,

@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,7 +13,7 @@ import 'package:talabajon/features/auth/widgets/custom_text_field_password.dart'
 import 'package:talabajon/features/common/widgets/custom_button.dart';
 
 import '../../../core/l10n/app_localizations.dart';
-import '../../../core/utils/icons.dart';
+import '../../../core/utils/svgs.dart';
 import '../../../data/models/auth/register_request_model.dart';
 import '../managers/register/register_bloc.dart';
 import '../managers/register/register_event.dart';
@@ -46,7 +47,6 @@ class _RegisterPageState extends State<RegisterPage> {
         lastNameController.text.isNotEmpty &&
         usernameController.text.isNotEmpty &&
         passwordController.text.isNotEmpty;
-
     if (valid != isFormValid) {
       setState(() {
         isFormValid = valid;
@@ -99,17 +99,17 @@ class _RegisterPageState extends State<RegisterPage> {
                 spacing: 10.h,
                 children: [
                   CustomTextField(
-                    nameController: nameController,
+                    controller: nameController,
                     icon: AppSvgs.account,
                     hintText: local.first_name,
                   ),
                   CustomTextField(
-                    nameController: lastNameController,
+                    controller: lastNameController,
                     icon: AppSvgs.account,
                     hintText: local.last_name,
                   ),
                   CustomTextField(
-                    nameController: usernameController,
+                    controller: usernameController,
                     icon: AppSvgs.userName,
                     hintText: local.username,
                   ),
@@ -119,8 +119,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     hint: local.password,
                   ),
                   CustomTextField(
-                    nameController: referralController,
-                    icon: AppSvgs.referal,
+                    controller: referralController,
+                    icon: AppSvgs.referral,
                     hintText: local.referral_id,
                   ),
                 ],
@@ -145,6 +145,27 @@ class _RegisterPageState extends State<RegisterPage> {
                           );
                         }
                       : null,
+                ),
+              ),
+              SizedBox(height: 30.h),
+              Center(
+                child: RichText(
+                  text: TextSpan(
+                    style: AppStyles.w400s12,
+                    children: [
+                      TextSpan(
+                        text: local.already_have_account,
+                      ),
+                      TextSpan(
+                        text: local.login,
+                        style: AppStyles.w500s12.copyWith(color: AppColors.indigoBlue),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            context.go(Routes.login);
+                          },
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

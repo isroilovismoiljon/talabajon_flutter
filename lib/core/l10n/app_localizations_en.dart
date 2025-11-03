@@ -65,4 +65,83 @@ class MyLocalizationsEn extends MyLocalizations {
 
   @override
   String get login => 'Login';
+
+  @override
+  String get sign_up => 'Sign Up';
+
+  @override
+  String get already_have_account => 'Already have an account? ';
+
+  @override
+  String get dont_have_account => 'Don’t have an account? ';
+
+  @override
+  String get text_been_copied_clipboard =>
+      'Text has been copied to clipboard ✅';
+
+  @override
+  String get balance => 'Balance:';
+
+  @override
+  String get popularity_service => 'Popularity service';
+
+  @override
+  String get prepare_presentation => 'Prepare a presentation';
+
+  @override
+  String get do_independent_assignment => 'Do an independent assignment';
+
+  @override
+  String get write_report => 'Write a report';
+
+  @override
+  String get home => 'Home';
+
+  @override
+  String get balanceBottom => 'Balance';
+
+  @override
+  String get documents => 'Documents';
+
+  @override
+  String get settings => 'Settings';
+
+  @override
+  String get my_account => 'My Account';
+
+  @override
+  String get enable_dark_mode => 'Enable Dark Mode';
+
+  @override
+  String get settings_profile => 'Settings profile';
+
+  @override
+  String get referral_system => 'Referral system';
+
+  @override
+  String get introduction_app => 'Introduction app';
+
+  @override
+  String get share_friends => 'Share friends';
+
+  @override
+  String get contact_us => 'Contact us';
+
+  @override
+  String get language => 'Language';
+
+  @override
+  String get about => 'About';
+
+  @override
+  String get log_out => 'Log Out';
+
+  @override
+  String get switch_language => 'Switch language';
+
+  @override
+  String get phone_number => 'Phone number';
+
+  @override
+  String get update_profile => 'Update Profile';
 }

@@ -9,12 +9,6 @@ class ResetPasswordModel {
     required this.password,
   });
 
-  factory ResetPasswordModel.fromJson(Map<String, dynamic> json) => ResetPasswordModel(
-    username: json["username"],
-    verificationCode: json["verificationCode"],
-    password: json["password"],
-  );
-
   Map<String, dynamic> toJson() => {
     "username": username,
     "verificationCode": verificationCode,

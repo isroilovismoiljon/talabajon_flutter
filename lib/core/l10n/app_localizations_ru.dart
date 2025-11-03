@@ -66,4 +66,82 @@ class MyLocalizationsRu extends MyLocalizations {
 
   @override
   String get login => 'Войти';
+
+  @override
+  String get sign_up => 'Зарегистрироваться';
+
+  @override
+  String get already_have_account => 'Уже есть аккаунт? ';
+
+  @override
+  String get dont_have_account => 'Нет аккаунта? ';
+
+  @override
+  String get text_been_copied_clipboard => 'Текст скопирован в буфер ✅';
+
+  @override
+  String get balance => 'Баланс:';
+
+  @override
+  String get popularity_service => 'Популярные услуги';
+
+  @override
+  String get prepare_presentation => 'Подготовить презентацию';
+
+  @override
+  String get do_independent_assignment => 'Выполнить самостоятельную работу';
+
+  @override
+  String get write_report => 'Написать реферат';
+
+  @override
+  String get home => 'Главная';
+
+  @override
+  String get balanceBottom => 'Баланс';
+
+  @override
+  String get documents => 'Документы';
+
+  @override
+  String get settings => 'Настройки';
+
+  @override
+  String get my_account => 'Мой аккаунт';
+
+  @override
+  String get enable_dark_mode => 'Включить тёмный режим';
+
+  @override
+  String get settings_profile => 'Настройки профиля';
+
+  @override
+  String get referral_system => 'Реферальная система';
+
+  @override
+  String get introduction_app => 'О приложении';
+
+  @override
+  String get share_friends => 'Поделиться с друзьями';
+
+  @override
+  String get contact_us => 'Связаться с нами';
+
+  @override
+  String get language => 'Язык';
+
+  @override
+  String get about => 'О нас';
+
+  @override
+  String get log_out => 'Выйти';
+
+  @override
+  String get switch_language => 'Сменить язык';
+
+  @override
+  String get phone_number => 'Номер телефона';
+
+  @override
+  String get update_profile => 'Обновить профиль';
 }

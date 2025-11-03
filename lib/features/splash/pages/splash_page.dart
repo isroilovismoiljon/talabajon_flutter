@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:talabajon/core/routing/routes.dart';
 import 'package:talabajon/core/utils/colors.dart';
-import 'package:talabajon/core/utils/icons.dart';
+import 'package:talabajon/core/utils/svgs.dart';
 import 'package:talabajon/core/utils/styles.dart';
 
 class SplashPage extends StatefulWidget {
@@ -14,24 +15,26 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  final FlutterSecureStorage _secureStorage = const FlutterSecureStorage();
+
   @override
   void initState() {
     super.initState();
-    _navigate();
+    _checkTokenAndNavigate();
   }
 
-  Future<void> _navigate() async {
+  Future<void> _checkTokenAndNavigate() async {
     await Future.delayed(const Duration(seconds: 3));
-    context.go(Routes.selectLanguage);
-    // final prefs = await SharedPreferences.getInstance();
-    // final hasOpenedBefore = prefs.getBool('hasOpenedBefore') ?? false;
-    //
-    // if (hasOpenedBefore) {
-    //   context.go(Routes.home);
-    // } else {
-    //   await prefs.setBool('hasOpenedBefore', true);
-    //   context.go(Routes.selectLanguage);
-    // }
+
+    final token = await _secureStorage.read(key: "token");
+
+    if (!mounted) return;
+
+    if (token != null && token.isNotEmpty) {
+      context.go(Routes.home);
+    } else {
+      context.go(Routes.selectLanguage);
+    }
   }
 
   @override

@@ -207,6 +207,162 @@ abstract class MyLocalizations {
   /// In en, this message translates to:
   /// **'Login'**
   String get login;
+
+  /// Bu login dan registerga otish
+  ///
+  /// In en, this message translates to:
+  /// **'Sign Up'**
+  String get sign_up;
+
+  /// Bu register login go
+  ///
+  /// In en, this message translates to:
+  /// **'Already have an account? '**
+  String get already_have_account;
+
+  /// Bu login register go
+  ///
+  /// In en, this message translates to:
+  /// **'Don’t have an account? '**
+  String get dont_have_account;
+
+  /// Bu home copy text
+  ///
+  /// In en, this message translates to:
+  /// **'Text has been copied to clipboard ✅'**
+  String get text_been_copied_clipboard;
+
+  /// Bu home balance
+  ///
+  /// In en, this message translates to:
+  /// **'Balance:'**
+  String get balance;
+
+  /// Bu home service
+  ///
+  /// In en, this message translates to:
+  /// **'Popularity service'**
+  String get popularity_service;
+
+  /// Bu home taqdimot
+  ///
+  /// In en, this message translates to:
+  /// **'Prepare a presentation'**
+  String get prepare_presentation;
+
+  /// Bu home mustaqil ish
+  ///
+  /// In en, this message translates to:
+  /// **'Do an independent assignment'**
+  String get do_independent_assignment;
+
+  /// Bu home referat
+  ///
+  /// In en, this message translates to:
+  /// **'Write a report'**
+  String get write_report;
+
+  /// Bu bottomBar title
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get home;
+
+  /// Bu bottomBar title
+  ///
+  /// In en, this message translates to:
+  /// **'Balance'**
+  String get balanceBottom;
+
+  /// Bu bottomBar title
+  ///
+  /// In en, this message translates to:
+  /// **'Documents'**
+  String get documents;
+
+  /// Bu bottomBar title
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settings;
+
+  /// Bu my account
+  ///
+  /// In en, this message translates to:
+  /// **'My Account'**
+  String get my_account;
+
+  /// Bu my account thema
+  ///
+  /// In en, this message translates to:
+  /// **'Enable Dark Mode'**
+  String get enable_dark_mode;
+
+  /// Bu my account setting
+  ///
+  /// In en, this message translates to:
+  /// **'Settings profile'**
+  String get settings_profile;
+
+  /// Bu my account referral
+  ///
+  /// In en, this message translates to:
+  /// **'Referral system'**
+  String get referral_system;
+
+  /// Bu my account introduction
+  ///
+  /// In en, this message translates to:
+  /// **'Introduction app'**
+  String get introduction_app;
+
+  /// Bu my account share
+  ///
+  /// In en, this message translates to:
+  /// **'Share friends'**
+  String get share_friends;
+
+  /// Bu my account contact
+  ///
+  /// In en, this message translates to:
+  /// **'Contact us'**
+  String get contact_us;
+
+  /// Bu my account language
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get language;
+
+  /// Bu my account about
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get about;
+
+  /// Bu my account log out
+  ///
+  /// In en, this message translates to:
+  /// **'Log Out'**
+  String get log_out;
+
+  /// Bu my account language
+  ///
+  /// In en, this message translates to:
+  /// **'Switch language'**
+  String get switch_language;
+
+  /// Bu profile phone number
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number'**
+  String get phone_number;
+
+  /// Bu profile success
+  ///
+  /// In en, this message translates to:
+  /// **'Update Profile'**
+  String get update_profile;
 }
 
 class _MyLocalizationsDelegate extends LocalizationsDelegate<MyLocalizations> {

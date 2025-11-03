@@ -11,13 +11,14 @@ class CustomButton extends StatelessWidget {
     this.width = 390,
     this.height = 62,
     required this.title,
-    this.color = AppColors.black,
+    this.color = AppColors.indigoBlue,
     this.style = AppStyles.w600s18w,
     this.border = false,
+    this.borderRadius = 10,
   });
 
   final VoidCallback? onPressed;
-  final int width, height;
+  final double width, height, borderRadius;
   final String title;
   final Color color;
   final TextStyle style;
@@ -36,7 +37,7 @@ class CustomButton extends StatelessWidget {
         fixedSize: Size(width.w, height.h),
         side: border ? const BorderSide(color: AppColors.border, width: 1.5) : null,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.r),
+          borderRadius: BorderRadius.circular(borderRadius.r),
         ),
       ),
       onPressed: onPressed,
