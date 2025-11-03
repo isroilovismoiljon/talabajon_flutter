@@ -10,7 +10,6 @@ class LocalizationCubit extends Cubit<Locale> {
   String _currentLocale;
   final prefs = SharedPreferencesAsync();
 
-  // 🔹 Getter: LoginPage ichida currentLocale ishlatish uchun
   String get currentLocale => _currentLocale;
 
   Future<void> changeLocale({required String locale}) async {

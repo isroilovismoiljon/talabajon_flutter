@@ -9,10 +9,12 @@ class CustomTextField extends StatelessWidget {
     required this.controller,
     required this.icon,
     required this.hintText,
+    this.svgColor = AppColors.black,
   });
 
   final TextEditingController controller;
   final String icon;
+  final Color svgColor;
   final String hintText;
 
   @override
@@ -27,22 +29,23 @@ class CustomTextField extends StatelessWidget {
           child: Center(
             child: SvgPicture.asset(
               icon,
+              colorFilter: ColorFilter.mode(svgColor, BlendMode.srcIn),
             ),
           ),
         ),
         hintText: hintText,
         hintStyle: TextStyle(color: AppColors.hintText),
         border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(7.r),
-            borderSide: BorderSide(color: AppColors.border)
+          borderRadius: BorderRadius.circular(7.r),
+          borderSide: BorderSide(color: AppColors.border),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(7.r),
-          borderSide: BorderSide(color: AppColors.border)
+          borderSide: BorderSide(color: AppColors.border),
         ),
         enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(7.r),
-            borderSide: BorderSide(color: AppColors.border)
+          borderRadius: BorderRadius.circular(7.r),
+          borderSide: BorderSide(color: AppColors.border),
         ),
       ),
     );

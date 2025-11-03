@@ -14,11 +14,13 @@ class CustomSvgButton extends StatelessWidget {
     this.color = AppColors.indigoBlue,
     required this.title,
     required this.svg,
+    this.style = AppStyles.w600s16w,
   });
 
   final VoidCallback? onPressed;
   final double width, height, border;
   final Color color;
+  final TextStyle style;
   final String title, svg;
 
   static void _defaultOnPressed() {}
@@ -33,18 +35,23 @@ class CustomSvgButton extends StatelessWidget {
         disabledForegroundColor: AppColors.hintText,
         fixedSize: Size(width.w, height.h),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(border.r),
+          borderRadius: BorderRadius.circular(
+            border.r,
+          ),
         ),
+        side: BorderSide(color: AppColors.indigoBlue, width: 2),
       ),
       onPressed: onPressed,
       child: Row(
         spacing: 10.w,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SvgPicture.asset(svg),
+          SvgPicture.asset(
+            svg,
+          ),
           Text(
             title,
-            style: AppStyles.w600s16w,
+            style: style,
           ),
         ],
       ),

@@ -38,6 +38,8 @@ class _CustomTextFieldPasswordState extends State<CustomTextFieldPassword> {
           child: Center(
             child: SvgPicture.asset(
               widget.icon,
+              width: 24.w,
+              height: 24.h,
             ),
           ),
         ),

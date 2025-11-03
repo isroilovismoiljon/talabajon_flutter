@@ -150,7 +150,6 @@ class _VerifyPageState extends State<VerifyPage> {
         ),
       ],
       child: Scaffold(
-        // backgroundColor: Colors.grey,
         body: Stack(
           fit: StackFit.expand,
           children: [

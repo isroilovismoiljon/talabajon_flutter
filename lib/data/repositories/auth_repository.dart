@@ -31,7 +31,7 @@ class AuthRepository {
         return Result.error(error);
       },
       (value) async {
-        // print("succes: ${value}");
+        print("succes: ${value}");
         return Result.ok(AuthResponseModel.fromJson(value));
       },
     );
@@ -47,7 +47,7 @@ class AuthRepository {
         return Result.error(error);
       },
       (value) async {
-        // print("token: ${ value["data"]?["token"]}");
+        print("token: ${ value["data"]?["token"]}");
         _secureStorage.write(key: "token", value:  value["data"]?["token"]);
         return Result.ok(AuthResponseModel.fromJson(value));
       },

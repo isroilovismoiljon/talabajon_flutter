@@ -5,9 +5,8 @@ class Routes {
   static const login = "/login";
   static const verify = "/verify";
   static const home = "/home";
-  static const updateProfile = "/update-profile";
   static const settings = "/settings";
-  static const introduction = "/introduction";
-  static const documents = "/documents";
-  static const editProfile = "/edit-profile";
+  static const profile = "/profile";
+  static const introductionApp = "/introduction-app";
+  static const createPresentation = "/create-presentation";
 }

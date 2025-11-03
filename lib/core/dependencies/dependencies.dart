@@ -3,8 +3,8 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import '../../data/repositories/auth_repository.dart';
-import 'auth_interceptor.dart';
-import 'client.dart';
+import '../network/auth_interceptor.dart';
+import '../network/client.dart';
 
 final dependencies = <SingleChildWidget> [
   Provider(create: (context) => FlutterSecureStorage()),

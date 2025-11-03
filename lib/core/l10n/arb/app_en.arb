@@ -70,6 +70,110 @@
   "login": "Login",
   "@login": {
     "description": "Bu login success"
+  },
+  "sign_up": "Sign Up",
+  "@sign_up": {
+    "description": "Bu login dan registerga otish"
+  },
+  "already_have_account": "Already have an account? ",
+  "@already_have_account": {
+    "description": "Bu register login go"
+  },
+  "dont_have_account": "Don’t have an account? ",
+  "@dont_have_account": {
+    "description": "Bu login register go"
+  },
+  "text_been_copied_clipboard": "Text has been copied to clipboard ✅",
+  "@text_been_copied_clipboard": {
+    "description": "Bu home copy text"
+  },
+  "balance": "Balance:",
+  "@balance": {
+    "description": "Bu home balance"
+  },
+  "popularity_service": "Popularity service",
+  "@popularity_service": {
+    "description": "Bu home service"
+  },
+  "prepare_presentation": "Prepare a presentation",
+  "@prepare_presentation": {
+    "description": "Bu home taqdimot"
+  },
+  "do_independent_assignment": "Do an independent assignment",
+  "@do_independent_assignment": {
+    "description": "Bu home mustaqil ish"
+  },
+  "write_report": "Write a report",
+  "@write_report": {
+    "description": "Bu home referat"
+  },
+  "home": "Home",
+  "@home": {
+    "description": "Bu bottomBar title"
+  },
+  "balanceBottom": "Balance",
+  "@balanceBottom": {
+    "description": "Bu bottomBar title"
+  },
+  "documents": "Documents",
+  "@documents": {
+    "description": "Bu bottomBar title"
+  },
+  "settings": "Settings",
+  "@settings": {
+    "description": "Bu bottomBar title"
+  },
+  "my_account": "My Account",
+  "@my_account": {
+    "description": "Bu my account"
+  },
+  "enable_dark_mode": "Enable Dark Mode",
+  "@enable_dark_mode": {
+    "description": "Bu my account thema"
+  },
+  "settings_profile": "Settings profile",
+  "@settings_profile": {
+    "description": "Bu my account setting"
+  },
+  "referral_system": "Referral system",
+  "@referral_system": {
+    "description": "Bu my account referral"
+  },
+  "introduction_app": "Introduction app",
+  "@introduction_app": {
+    "description": "Bu my account introduction"
+  },
+  "share_friends": "Share friends",
+  "@share_friends": {
+    "description": "Bu my account share"
+  },
+  "contact_us": "Contact us",
+  "@contact_us": {
+    "description": "Bu my account contact"
+  },
+  "language": "Language",
+  "@language": {
+    "description": "Bu my account language"
+  },
+  "about": "About",
+  "@about": {
+    "description": "Bu my account about"
+  },
+  "log_out": "Log Out",
+  "@log_out": {
+    "description": "Bu my account log out"
+  },
+  "switch_language": "Switch language",
+  "@switch_language": {
+    "description": "Bu my account language"
+  },
+  "phone_number": "Phone number",
+  "@phone_number": {
+    "description": "Bu profile phone number"
+  },
+  "update_profile": "Update Profile",
+  "@update_profile": {
+    "description": "Bu profile success"
   }
 
 }

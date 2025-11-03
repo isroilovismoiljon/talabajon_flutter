@@ -47,7 +47,6 @@ class _RegisterPageState extends State<RegisterPage> {
         lastNameController.text.isNotEmpty &&
         usernameController.text.isNotEmpty &&
         passwordController.text.isNotEmpty;
-
     if (valid != isFormValid) {
       setState(() {
         isFormValid = valid;
@@ -72,11 +71,11 @@ class _RegisterPageState extends State<RegisterPage> {
     return BlocListener<RegisterBloc, RegisterState>(
       listener: (context, state) {
         if (state.registerStatus == Status.success) {
-          // ScaffoldMessenger.of(context).showSnackBar(
-          //   SnackBar(
-          //     content: Text("code: ${state.register?.data?.telegramDeepLink} ${state.register!.data!.user!.id}"),
-          //   ),
-          // );
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text("code: ${state.register?.data?.telegramDeepLink} ${state.register!.data!.user!.id}"),
+            ),
+          );
           context.go(Routes.verify, extra: {"registerInfo": state.register});
         }else if (state.registerStatus == Status.error) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -121,7 +120,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   CustomTextField(
                     controller: referralController,
-                    icon: AppSvgs.referal,
+                    icon: AppSvgs.referral,
                     hintText: local.referral_id,
                   ),
                 ],
@@ -155,10 +154,10 @@ class _RegisterPageState extends State<RegisterPage> {
                     style: AppStyles.w400s12,
                     children: [
                       TextSpan(
-                        text: "Already have an account? ",
+                        text: local.already_have_account,
                       ),
                       TextSpan(
-                        text: "Login",
+                        text: local.login,
                         style: AppStyles.w500s12.copyWith(color: AppColors.indigoBlue),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
