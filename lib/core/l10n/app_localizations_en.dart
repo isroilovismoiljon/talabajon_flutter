@@ -144,4 +144,22 @@ class MyLocalizationsEn extends MyLocalizations {
 
   @override
   String get update_profile => 'Update Profile';
+
+  @override
+  String get create_presentation => 'Create presentation';
+
+  @override
+  String get theme => 'Theme';
+
+  @override
+  String get author => 'Author';
+
+  @override
+  String get select_design => 'Select Design';
+
+  @override
+  String get no_photo => 'no Photo';
+
+  @override
+  String get with_photo => 'with Photo';
 }

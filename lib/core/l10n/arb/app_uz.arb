@@ -42,6 +42,12 @@
     "log_out": "Chiqish",
     "switch_language": "Tilni almashtirish",
     "phone_number": "Telefon raqami",
-    "update_profile": "Profilni yangilash"
+    "update_profile": "Profilni yangilash",
+    "create_presentation": "Taqdimot yaratish",
+    "theme": "Mavzu",
+    "author": "Muallif",
+    "select_design": "Dizayn tanlang",
+    "no_photo": "Rasmsiz",
+    "with_photo": "Rasm bilan"
 
 }

@@ -13,6 +13,8 @@ class CustomEmptyField extends StatelessWidget {
     this.border = 5,
     this.align = TextAlign.start,
     this.style = AppStyles.w400s16,
+    this.keyboard = TextInputType.text,
+    this.onChanged,
   });
 
   final TextEditingController controller;
@@ -20,15 +22,19 @@ class CustomEmptyField extends StatelessWidget {
   final double width, border;
   final int maxLines;
   final TextAlign align;
+  final TextInputType keyboard;
   final TextStyle style;
+  final ValueChanged<String>? onChanged;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
+      keyboardType: keyboard,
       maxLines: maxLines,
       style: style,
       textAlign: align,
+      onChanged: onChanged,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
         constraints: BoxConstraints(

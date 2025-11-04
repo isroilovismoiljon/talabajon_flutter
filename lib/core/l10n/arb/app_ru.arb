@@ -42,6 +42,12 @@
     "log_out": "Выйти",
     "switch_language": "Сменить язык",
     "phone_number": "Номер телефона",
-    "update_profile": "Обновить профиль"
+    "update_profile": "Обновить профиль",
+    "create_presentation": "Создать презентацию",
+    "theme": "Тема",
+    "author": "Автор",
+    "select_design": "Выбрать дизайн",
+    "no_photo": "Без фото",
+    "with_photo": "С фото"
 
 }
