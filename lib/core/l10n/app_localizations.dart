@@ -363,6 +363,42 @@ abstract class MyLocalizations {
   /// In en, this message translates to:
   /// **'Update Profile'**
   String get update_profile;
+
+  /// Bu create presentation title
+  ///
+  /// In en, this message translates to:
+  /// **'Create presentation'**
+  String get create_presentation;
+
+  /// Bu create presentation theme field
+  ///
+  /// In en, this message translates to:
+  /// **'Theme'**
+  String get theme;
+
+  /// Bu create presentation author field
+  ///
+  /// In en, this message translates to:
+  /// **'Author'**
+  String get author;
+
+  /// Bu create presentation select design
+  ///
+  /// In en, this message translates to:
+  /// **'Select Design'**
+  String get select_design;
+
+  /// Bu create presentation no photo
+  ///
+  /// In en, this message translates to:
+  /// **'no Photo'**
+  String get no_photo;
+
+  /// Bu create presentation with photo
+  ///
+  /// In en, this message translates to:
+  /// **'with Photo'**
+  String get with_photo;
 }
 
 class _MyLocalizationsDelegate extends LocalizationsDelegate<MyLocalizations> {

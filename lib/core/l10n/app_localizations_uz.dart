@@ -143,4 +143,22 @@ class MyLocalizationsUz extends MyLocalizations {
 
   @override
   String get update_profile => 'Profilni yangilash';
+
+  @override
+  String get create_presentation => 'Taqdimot yaratish';
+
+  @override
+  String get theme => 'Mavzu';
+
+  @override
+  String get author => 'Muallif';
+
+  @override
+  String get select_design => 'Dizayn tanlang';
+
+  @override
+  String get no_photo => 'Rasmsiz';
+
+  @override
+  String get with_photo => 'Rasm bilan';
 }

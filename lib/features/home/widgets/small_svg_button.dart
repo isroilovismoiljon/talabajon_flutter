@@ -24,7 +24,7 @@ class SmallSvgButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onPressed,
       child: Container(
         width: width.w,
         height: height.h,

@@ -36,8 +36,13 @@ class AppSvgs {
   static const phone = "assets/icons/phone.svg";
   static const backArrow = "assets/icons/back_arrow.svg";
   static const chat = "assets/icons/chat.svg";
+  static const addCircle = "assets/icons/add_circle.svg";
+  static const galleryAdd = "assets/icons/gallery_add.svg";
+  static const cancelRed = "assets/icons/cancel_red.svg";
   static const minus = "assets/icons/minus.svg";
   static const plus = "assets/icons/plus.svg";
   static const template = "assets/icons/template.svg";
+  static const yandex = "assets/icons/yandex.svg";
+  static const google = "assets/icons/google.svg";
 
 }

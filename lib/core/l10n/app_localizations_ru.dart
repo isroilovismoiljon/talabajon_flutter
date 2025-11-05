@@ -144,4 +144,22 @@ class MyLocalizationsRu extends MyLocalizations {
 
   @override
   String get update_profile => 'Обновить профиль';
+
+  @override
+  String get create_presentation => 'Создать презентацию';
+
+  @override
+  String get theme => 'Тема';
+
+  @override
+  String get author => 'Автор';
+
+  @override
+  String get select_design => 'Выбрать дизайн';
+
+  @override
+  String get no_photo => 'Без фото';
+
+  @override
+  String get with_photo => 'С фото';
 }

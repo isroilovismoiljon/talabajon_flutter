@@ -26,7 +26,7 @@ class _PageCountRowState extends State<PageCountRow> {
 
   @override
   Widget build(BuildContext context) {
-    final count = pageCount;
+    int count = pageCount;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -36,9 +36,10 @@ class _PageCountRowState extends State<PageCountRow> {
           height: 50,
           borderRadius: 82,
           color: AppColors.indigoBlue,
-          onPressed: count > 0
+          onPressed: count > 5
               ? () {
-                  widget.controller.text = (count - 1).toString();
+                  count -= 1;
+                  widget.controller.text = (count).toString();
                   setState(() {});
                 }
               : null,
@@ -50,6 +51,13 @@ class _PageCountRowState extends State<PageCountRow> {
           border: 82,
           align: TextAlign.center,
           style: AppStyles.w400s20,
+          keyboard: TextInputType.number,
+          onChanged: (value) {
+            final newValue = int.tryParse(value);
+            if (newValue != null) {
+              setState(() {});
+            }
+          },
         ),
 
         SmallSvgButton(
@@ -59,7 +67,9 @@ class _PageCountRowState extends State<PageCountRow> {
           borderRadius: 82,
           color: AppColors.indigoBlue,
           onPressed: () {
-            widget.controller.text = (count + 1).toString();
+            print(count);
+            count += 1;
+            widget.controller.text = (count).toString();
             setState(() {});
           },
         ),
