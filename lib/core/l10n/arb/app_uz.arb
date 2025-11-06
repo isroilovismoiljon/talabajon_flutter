@@ -48,6 +48,10 @@
     "author": "Muallif",
     "select_design": "Dizayn tanlang",
     "no_photo": "Rasmsiz",
-    "with_photo": "Rasm bilan"
-
+    "with_photo": "Rasm bilan",
+    "are_you_sure_you_want_logout": "Rostdan ham tizimdan chiqmoqchimisiz?",
+    "ok": "Ha",
+    "no": "Yo‘q",
+    "warning": "Ogohlantirish",
+    "edit_profile": "Profilni tahrirlash"
 }

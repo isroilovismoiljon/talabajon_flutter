@@ -44,5 +44,6 @@ class AppSvgs {
   static const template = "assets/icons/template.svg";
   static const yandex = "assets/icons/yandex.svg";
   static const google = "assets/icons/google.svg";
+  static const warning = "assets/icons/warning.svg";
 
 }

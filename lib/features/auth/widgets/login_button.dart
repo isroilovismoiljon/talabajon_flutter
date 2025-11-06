@@ -35,7 +35,6 @@ class LoginButton extends StatelessWidget {
                 final isDisabled = isLoading ||
                     usernameValue.text.trim().isEmpty ||
                     passwordValue.text.trim().isEmpty;
-
                 return CustomSvgButton(
                   title: isLoading ? 'Loading...' : local.login,
                   svg: AppSvgs.login,

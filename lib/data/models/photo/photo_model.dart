@@ -1,16 +1,18 @@
-class GooglePhotoModel {
+import 'package:equatable/equatable.dart';
+
+class PhotoModel {
   final bool success;
   final PhotoData data;
   final String timestamp;
 
-  GooglePhotoModel({
+  PhotoModel({
     required this.success,
     required this.data,
     required this.timestamp,
   });
 
-  factory GooglePhotoModel.fromJson(Map<String, dynamic> json) {
-    return GooglePhotoModel(
+  factory PhotoModel.fromJson(Map<String, dynamic> json) {
+    return PhotoModel(
       success: json['success'],
       data: PhotoData.fromJson(json['data']),
       timestamp: json['timestamp'],
@@ -50,7 +52,7 @@ class PhotoData {
   }
 }
 
-class Photo {
+class Photo extends Equatable {
   final String id;
   final String title;
   final String thumbnailUrl;
@@ -58,10 +60,10 @@ class Photo {
   final int width;
   final int height;
   final String source;
-  final String author;
-  final String authorUrl;
+  final String? author;
+  final String? authorUrl;
 
-  Photo({
+  const Photo({
     required this.id,
     required this.title,
     required this.thumbnailUrl,
@@ -69,9 +71,12 @@ class Photo {
     required this.width,
     required this.height,
     required this.source,
-    required this.author,
-    required this.authorUrl,
+    this.author,
+    this.authorUrl,
   });
+
+  @override
+  List<Object?> get props => [id];
 
   factory Photo.fromJson(Map<String, dynamic> json) {
     return Photo(

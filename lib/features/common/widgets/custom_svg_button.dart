@@ -39,7 +39,7 @@ class CustomSvgButton extends StatelessWidget {
             border.r,
           ),
         ),
-        side: BorderSide(color: AppColors.indigoBlue, width: 2),
+        side: BorderSide(color: onPressed != null ? AppColors.indigoBlue : AppColors.disabledButton, width: 2),
       ),
       onPressed: onPressed,
       child: Row(

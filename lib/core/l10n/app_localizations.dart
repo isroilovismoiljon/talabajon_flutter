@@ -399,6 +399,36 @@ abstract class MyLocalizations {
   /// In en, this message translates to:
   /// **'with Photo'**
   String get with_photo;
+
+  /// Bu logout
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to logout?'**
+  String get are_you_sure_you_want_logout;
+
+  /// Bu ok
+  ///
+  /// In en, this message translates to:
+  /// **'OK'**
+  String get ok;
+
+  /// Bu no
+  ///
+  /// In en, this message translates to:
+  /// **'NO'**
+  String get no;
+
+  /// Bu warning
+  ///
+  /// In en, this message translates to:
+  /// **'Warning'**
+  String get warning;
+
+  /// Bu edit profile
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Profile'**
+  String get edit_profile;
 }
 
 class _MyLocalizationsDelegate extends LocalizationsDelegate<MyLocalizations> {

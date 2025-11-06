@@ -1,13 +1,15 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:talabajon/features/auth/managers/verify/verify_bloc.dart';
+import 'package:talabajon/features/home/managers/me_bloc.dart';
+import 'package:talabajon/features/profile/managers/profile_bloc.dart';
 import 'package:talabajon/features/service/managers/photo_bloc.dart';
 
 import '../../features/auth/managers/login/login_bloc.dart';
 import '../../features/auth/managers/register/register_bloc.dart';
 import '../../features/auth/managers/resend_verify/resend_verify_bloc.dart';
 
-final blocDependencies = <SingleChildWidget> [
+final blocDependencies = <SingleChildWidget>[
   BlocProvider<RegisterBloc>(
     create: (context) => RegisterBloc(authRepo: context.read()),
   ),
@@ -23,7 +25,10 @@ final blocDependencies = <SingleChildWidget> [
   BlocProvider<PhotoBloc>(
     create: (context) => PhotoBloc(photoRepo: context.read()),
   ),
-  // BlocProvider<LoginBloc>(
-  //   create: (context) => LoginBloc(authenticationRepository: context.read()),
-  // ),
+  BlocProvider<MeBloc>(
+    create: (context) => MeBloc(meRepo: context.read()),
+  ),
+  BlocProvider<ProfileBloc>(
+    create: (context) => ProfileBloc(profileRepo: context.read()),
+  ),
 ];

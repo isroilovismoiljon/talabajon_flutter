@@ -48,6 +48,10 @@
     "author": "Автор",
     "select_design": "Выбрать дизайн",
     "no_photo": "Без фото",
-    "with_photo": "С фото"
-
+    "with_photo": "С фото",
+    "are_you_sure_you_want_logout": "Вы действительно хотите выйти из системы?",
+    "ok": "Да",
+    "no": "Нет",
+    "warning": "Предупреждение",
+    "edit_profile": "Редактировать профиль"
 }

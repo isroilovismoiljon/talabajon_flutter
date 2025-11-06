@@ -198,6 +198,26 @@
   "with_photo": "with Photo",
   "@with_photo": {
     "description": "Bu create presentation with photo"
+  },
+  "are_you_sure_you_want_logout": "Are you sure you want to logout?",
+  "@are_you_sure_you_want_logout": {
+    "description": "Bu logout"
+  },
+  "ok": "OK",
+  "@ok": {
+    "description": "Bu ok"
+  },
+  "no": "NO",
+  "@no": {
+    "description": "Bu no"
+  },
+  "warning": "Warning",
+  "@warning": {
+    "description": "Bu warning"
+  },
+  "edit_profile": "Edit Profile",
+  "@edit_profile": {
+    "description": "Bu edit profile"
   }
 
 }

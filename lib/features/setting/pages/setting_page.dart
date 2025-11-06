@@ -6,6 +6,7 @@ import 'package:talabajon/core/utils/colors.dart';
 import 'package:talabajon/core/utils/svgs.dart';
 import 'package:talabajon/features/common/widgets/custom_bottom_navigation_bar.dart';
 import 'package:talabajon/features/common/widgets/custom_svg_button.dart';
+import 'package:talabajon/features/common/widgets/dialog/alert_dialog_widget.dart';
 import 'package:talabajon/features/setting/widget/setting_widget.dart';
 
 import '../../../core/l10n/app_localizations.dart';
@@ -35,20 +36,31 @@ class SettingPage extends StatelessWidget {
                   title: local.settings_profile,
                   svg: AppSvgs.profile,
                   onPressed: () {
-                    context.go(Routes.profile);
+                    context.push(Routes.profile);
                   },
                 ),
-                SettingWidget(title: local.referral_system, svg: AppSvgs.referral),
+                SettingWidget(
+                  title: local.referral_system,
+                  svg: AppSvgs.referral,
+                ),
                 SettingWidget(
                   title: local.introduction_app,
                   svg: AppSvgs.introduction,
                   rightSvg: false,
                   onPressed: () {
-                    context.go(Routes.introductionApp);
+                    context.push(Routes.introductionApp);
                   },
                 ),
-                SettingWidget(title: local.share_friends, svg: AppSvgs.share, rightSvg: false),
-                SettingWidget(title: local.contact_us, svg: AppSvgs.contact, rightSvg: false),
+                SettingWidget(
+                  title: local.share_friends,
+                  svg: AppSvgs.share,
+                  rightSvg: false,
+                ),
+                SettingWidget(
+                  title: local.contact_us,
+                  svg: AppSvgs.contact,
+                  rightSvg: false,
+                ),
                 SettingWidget(
                   title: local.language,
                   svg: AppSvgs.language,
@@ -56,7 +68,9 @@ class SettingPage extends StatelessWidget {
                     showModalBottomSheet(
                       context: context,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.vertical(top: Radius.circular(20.r)),
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(20.r),
+                        ),
                       ),
                       builder: (context) => LanguageBottomSheet(),
                     );
@@ -73,7 +87,19 @@ class SettingPage extends StatelessWidget {
               color: Colors.transparent,
               style: AppStyles.w600s16.copyWith(color: AppColors.indigoBlue),
               onPressed: () {
-                context.go(Routes.login);
+                showDialog(
+                  context: context,
+                  barrierDismissible: false,
+                  builder: (context) {
+                    return AlertDialogWidget(
+                      title1: local.log_out,
+                      title2: local.are_you_sure_you_want_logout,
+                      onPressed: (){
+                        context.go(Routes.login);
+                      },
+                    );
+                  },
+                );
               },
             ),
           ],

@@ -162,4 +162,20 @@ class MyLocalizationsRu extends MyLocalizations {
 
   @override
   String get with_photo => 'С фото';
+
+  @override
+  String get are_you_sure_you_want_logout =>
+      'Вы действительно хотите выйти из системы?';
+
+  @override
+  String get ok => 'Да';
+
+  @override
+  String get no => 'Нет';
+
+  @override
+  String get warning => 'Предупреждение';
+
+  @override
+  String get edit_profile => 'Редактировать профиль';
 }
