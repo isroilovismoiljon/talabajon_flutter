@@ -3,7 +3,8 @@ import 'package:provider/single_child_widget.dart';
 import 'package:talabajon/features/auth/managers/verify/verify_bloc.dart';
 import 'package:talabajon/features/home/managers/me_bloc.dart';
 import 'package:talabajon/features/profile/managers/profile_bloc.dart';
-import 'package:talabajon/features/service/managers/photo_bloc.dart';
+import 'package:talabajon/features/service/managers/design/design_bloc.dart';
+import 'package:talabajon/features/service/managers/photo/photo_bloc.dart';
 
 import '../../features/auth/managers/login/login_bloc.dart';
 import '../../features/auth/managers/register/register_bloc.dart';
@@ -30,5 +31,8 @@ final blocDependencies = <SingleChildWidget>[
   ),
   BlocProvider<ProfileBloc>(
     create: (context) => ProfileBloc(profileRepo: context.read()),
+  ),
+  BlocProvider<DesignBloc>(
+    create: (context) => DesignBloc(designRepo: context.read()),
   ),
 ];

@@ -1,4 +1,5 @@
-import '../../../data/models/photo/photo_model.dart';
+
+import '../../../../data/models/photo/photo_model.dart';
 
 sealed class PhotoEvent {}
 
