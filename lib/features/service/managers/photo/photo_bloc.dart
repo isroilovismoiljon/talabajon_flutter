@@ -2,9 +2,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:talabajon/core/constants/status.dart';
 import 'package:talabajon/data/repositories/photo_repository.dart';
-import 'package:talabajon/features/service/managers/photo_event.dart';
-import 'package:talabajon/features/service/managers/photo_state.dart';
-import '../../../data/models/photo/photo_model.dart';
+import 'package:talabajon/features/service/managers/photo/photo_event.dart';
+import 'package:talabajon/features/service/managers/photo/photo_state.dart';
+
+import '../../../../data/models/photo/photo_model.dart';
 
 class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
   final PhotoRepository _photoRepo;

@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -82,7 +81,6 @@ class _ProfilePageState extends State<ProfilePage> {
           if (state.userMe != null) {
             _setUserData(state.userMe!.data);
           }
-
           return Scaffold(
             appBar: AppBarCommon(title: local.edit_profile),
             body: SingleChildScrollView(
@@ -99,7 +97,6 @@ class _ProfilePageState extends State<ProfilePage> {
                               userImage = file;
                             },
                           ),
-
                           SizedBox(height: 21.h),
                           Column(
                             children: [

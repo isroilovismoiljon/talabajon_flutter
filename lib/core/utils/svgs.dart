@@ -45,5 +45,9 @@ class AppSvgs {
   static const yandex = "assets/icons/yandex.svg";
   static const google = "assets/icons/google.svg";
   static const warning = "assets/icons/warning.svg";
+  static const recently = "assets/icons/recently.svg";
+  static const literature = "assets/icons/literature.svg";
+  static const all = "assets/icons/all.svg";
+  static const pinterest = "assets/icons/pinterest.svg";
 
 }

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,12 +9,12 @@ import 'package:talabajon/core/utils/colors.dart';
 import 'package:talabajon/core/utils/styles.dart';
 import 'package:talabajon/core/utils/svgs.dart';
 import 'package:talabajon/features/common/widgets/custom_svg_button.dart';
-import 'package:talabajon/features/service/managers/photo_bloc.dart';
-import 'package:talabajon/features/service/managers/photo_state.dart';
+import 'package:talabajon/features/service/managers/photo/photo_bloc.dart';
 import 'package:translator/translator.dart';
 
 import '../../../core/constants/status.dart';
-import '../managers/photo_event.dart';
+import '../managers/photo/photo_event.dart';
+import '../managers/photo/photo_state.dart';
 
 class ShowSelectPhotosBottomSheet extends StatefulWidget {
   final int pageCount;
@@ -31,8 +33,9 @@ class ShowSelectPhotosBottomSheet extends StatefulWidget {
 class _ShowSelectPhotosBottomSheetState extends State<ShowSelectPhotosBottomSheet> {
   final searchController = TextEditingController();
   final translator = GoogleTranslator();
+  final random = Random();
 
-  String currentSource = "google";
+  String currentSource = "yandex";
 
   @override
   void initState() {
@@ -58,7 +61,7 @@ class _ShowSelectPhotosBottomSheetState extends State<ShowSelectPhotosBottomShee
                 width: 146.w,
                 height: 5.h,
                 decoration: BoxDecoration(
-                  color: Colors.grey,
+                  color: AppColors.black,
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
@@ -69,22 +72,22 @@ class _ShowSelectPhotosBottomSheetState extends State<ShowSelectPhotosBottomShee
                   Row(
                     children: [
                       _searchButton(
-                        "Google",
-                        AppSvgs.google,
-                        currentSource == "google",
-                        () {
-                          setState(() => currentSource = "google");
-                          context.read<PhotoBloc>().add(GoogleEvent(title: searchController.text));
+                        "Yandex",
+                        AppSvgs.yandex,
+                        currentSource == "yandex",
+                            () {
+                          setState(() => currentSource = "yandex");
+                          context.read<PhotoBloc>().add(YandexEvent(title: searchController.text));
                         },
                       ),
                       SizedBox(width: 8.w),
                       _searchButton(
-                        "Yandex",
-                        AppSvgs.yandex,
-                        currentSource == "yandex",
-                        () {
-                          setState(() => currentSource = "yandex");
-                          context.read<PhotoBloc>().add(YandexEvent(title: searchController.text));
+                        "Google",
+                        AppSvgs.google,
+                        currentSource == "google",
+                            () {
+                          setState(() => currentSource = "google");
+                          context.read<PhotoBloc>().add(GoogleEvent(title: searchController.text));
                         },
                       ),
                     ],
@@ -104,7 +107,9 @@ class _ShowSelectPhotosBottomSheetState extends State<ShowSelectPhotosBottomShee
               TextField(
                 controller: searchController,
                 onChanged: (query) async {
-                  if (query.trim().isEmpty) return;
+                  if (query
+                      .trim()
+                      .isEmpty) return;
 
                   final translation = await translator.translate(query, to: 'en');
 
@@ -179,81 +184,89 @@ class _ShowSelectPhotosBottomSheetState extends State<ShowSelectPhotosBottomShee
                         final photo = photos[index];
                         final selected = state.selectedPhotos.any((p) => p.id == photo.id);
 
-                        return GestureDetector(
-                          onTap: () {
-                            if (state.selectedPhotos.length < state.pageCount || selected) {
-                              context.read<PhotoBloc>().add(TogglePhotoSelectionEvent(photo));
-                            }
-                          },
-                          onLongPress: () {
-                            showDialog(
-                              context: context,
-                              barrierDismissible: true,
-                              builder: (_) => GestureDetector(
-                                onTap: () => context.pop(),
-                                child: Dialog(
-                                  backgroundColor: Colors.transparent,
-                                  child: Center(
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(12),
-                                      child: Image.network(
-                                        photo.fullUrl,
-                                        fit: BoxFit.contain,
-                                        width: 410.w,
-                                        height: 600.h,
-                                        loadingBuilder: (context, child, progress) {
-                                          if (progress == null) return child;
-                                          return SizedBox(
-                                            width: 410.w,
-                                            height: 600.h,
-                                            child: Center(
-                                              child: CircularProgressIndicator(
-                                                color: AppColors.white,
-                                                value: progress.expectedTotalBytes != null
-                                                    ? progress.cumulativeBytesLoaded / (progress.expectedTotalBytes ?? 1)
-                                                    : null,
+                        bool isError = false; // 🔹 yangi flag
+
+                        return StatefulBuilder(
+                          builder: (context, setInnerState) {
+                            return isError
+                                ? const SizedBox.shrink()
+                                : GestureDetector(
+                              onTap: () {
+                                if (!isError && (state.selectedPhotos.length < state.pageCount || selected)) {
+                                  context.read<PhotoBloc>().add(TogglePhotoSelectionEvent(photo));
+                                }
+                              },
+                              onLongPress: () {
+                                if (isError) return;
+                                showDialog(
+                                  context: context,
+                                  barrierDismissible: true,
+                                  builder: (_) =>
+                                      GestureDetector(
+                                        onTap: () => context.pop(),
+                                        child: Dialog(
+                                          backgroundColor: Colors.transparent,
+                                          child: Center(
+                                            child: ClipRRect(
+                                              borderRadius: BorderRadius.circular(12),
+                                              child: Image.network(
+                                                photo.fullUrl,
+                                                fit: BoxFit.contain,
+                                                width: 410.w,
+                                                height: 600.h,
+                                                loadingBuilder: (context, child, progress) {
+                                                  if (progress == null) return child;
+                                                  return SizedBox(
+                                                    width: 410.w,
+                                                    height: 600.h,
+                                                    child: const Center(
+                                                      child: CircularProgressIndicator(),
+                                                    ),
+                                                  );
+                                                },
+                                                errorBuilder: (context, error, stackTrace) {
+                                                  setInnerState(() => isError = true);
+                                                  return const SizedBox.shrink();
+                                                },
                                               ),
                                             ),
-                                          );
-                                        },
-                                        errorBuilder: (context, error, stackTrace) =>
-                                            const Icon(Icons.broken_image, color: Colors.red, size: 60),
+                                          ),
+                                        ),
                                       ),
+                                );
+                              },
+                              child: Stack(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(12),
+                                    child: Image.network(
+                                      photo.thumbnailUrl,
+                                      fit: BoxFit.cover,
+                                      width: double.infinity,
+                                      height: double.infinity,
+                                      errorBuilder: (context, error, stackTrace) {
+                                        setInnerState(() => isError = true);
+                                        return const SizedBox.shrink();
+                                      },
                                     ),
                                   ),
-                                ),
+                                  if (selected)
+                                    Positioned(
+                                      top: 6,
+                                      right: 6,
+                                      child: Container(
+                                        decoration: const BoxDecoration(
+                                          color: Colors.green,
+                                          shape: BoxShape.circle,
+                                        ),
+                                        padding: const EdgeInsets.all(4),
+                                        child: const Icon(Icons.check, size: 14, color: Colors.white),
+                                      ),
+                                    ),
+                                ],
                               ),
                             );
                           },
-                          child: Stack(
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(12),
-                                child: Image.network(
-                                  photo.thumbnailUrl,
-                                  fit: BoxFit.cover,
-                                  width: double.infinity,
-                                  height: double.infinity,
-                                  errorBuilder: (context, error, stackTrace) => const Center(
-                                    child: Icon(Icons.broken_image, color: Colors.red, size: 60),
-                                  ),
-                                ),
-                              ),
-                              if (selected)
-                                Positioned(
-                                  top: 6,
-                                  right: 6,
-                                  child: Container(
-                                    decoration: const BoxDecoration(
-                                      color: Colors.green,
-                                      shape: BoxShape.circle,
-                                    ),
-                                    padding: const EdgeInsets.all(4),
-                                    child: const Icon(Icons.check, size: 14, color: Colors.white),
-                                  ),
-                                ),
-                            ],
-                          ),
                         );
                       },
                     );
