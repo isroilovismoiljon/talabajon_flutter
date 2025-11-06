@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:talabajon/core/utils/colors.dart';
+import 'package:go_router/go_router.dart';
 import 'package:talabajon/core/utils/styles.dart';
+import 'package:talabajon/features/home/managers/me_bloc.dart';
+import 'package:talabajon/features/home/managers/me_state.dart';
 
 import '../../../core/l10n/app_localizations.dart';
 
@@ -11,53 +14,65 @@ class AccountAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final local = MyLocalizations.of(context)!;
-    return AppBar(
-      toolbarHeight: 85.h,
-      title: Align(
-        alignment: Alignment.centerLeft,
-        child: Text(local.my_account, style: AppStyles.w600s20),
-      ),
-      actions: [
-        Padding(
-          padding: EdgeInsets.only(right: 20.w, top: 10.h, bottom: 5.h),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              GestureDetector(
-                onTap: () {
-                  showDialog(
-                    context: context,
-                    builder: (_) => Dialog(
-                      backgroundColor: Colors.transparent,
-                      child: Center(
-                        child: Container(
-                          width: 200.w,
-                          height: 200.h,
-                          decoration: BoxDecoration(
-                            color: AppColors.neonGreen,
-                            shape: BoxShape.circle,
+    return BlocBuilder<MeBloc, MeState>(
+      builder: (context, state) => AppBar(
+        toolbarHeight: 85.h,
+        title: Align(
+          alignment: Alignment.centerLeft,
+          child: Text(local.my_account, style: AppStyles.w600s20),
+        ),
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(right: 20.w, top: 10.h, bottom: 5.h),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (_) => GestureDetector(
+                        onTap: () {
+                          context.pop();
+                        },
+                        child: Dialog(
+                          backgroundColor: Colors.transparent,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CircleAvatar(
+                                radius: 200.w,
+                                backgroundImage: NetworkImage(state.userMe!.data.photo),
+                                backgroundColor: Colors.grey[200],
+                              ),
+                              Text("${state.userMe!.data.firstName} ${state.userMe!.data.lastName}", style: AppStyles.w700s24w),
+                            ],
                           ),
                         ),
                       ),
-                    ),
-                  );
-                },
-                child: Container(
-                  width: 34.w,
-                  height: 34.h,
-                  decoration: BoxDecoration(
-                    color: AppColors.disabledButton,
-                    shape: BoxShape.circle,
-                  ),
+                    );
+                  },
+                  child: state.userMe!.data.photo.isEmpty
+                      ? Image.asset(
+                          "assets/photos/circle.png",
+                          width: 40.w,
+                          height: 40.h,
+                          fit: BoxFit.cover,
+                        )
+                      : CircleAvatar(
+                          radius: 20.w,
+                          backgroundImage: NetworkImage(state.userMe!.data.photo),
+                          backgroundColor: Colors.grey[200],
+                        ),
                 ),
-              ),
-              SizedBox(height: 4.h),
-              Text("Name Lastname", style: AppStyles.w400s14),
-            ],
+                SizedBox(height: 4.h),
+                Text("${state.userMe!.data.firstName} ${state.userMe!.data.lastName}", style: AppStyles.w400s14),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

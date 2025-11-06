@@ -161,4 +161,20 @@ class MyLocalizationsUz extends MyLocalizations {
 
   @override
   String get with_photo => 'Rasm bilan';
+
+  @override
+  String get are_you_sure_you_want_logout =>
+      'Rostdan ham tizimdan chiqmoqchimisiz?';
+
+  @override
+  String get ok => 'Ha';
+
+  @override
+  String get no => 'Yo‘q';
+
+  @override
+  String get warning => 'Ogohlantirish';
+
+  @override
+  String get edit_profile => 'Profilni tahrirlash';
 }

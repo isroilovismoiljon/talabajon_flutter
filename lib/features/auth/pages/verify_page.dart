@@ -93,12 +93,12 @@ class _VerifyPageState extends State<VerifyPage> {
                       context: context,
                       builder: (context) {
                         return AlertDialog(
-                          title: const Text("Ogohlantirish"),
+                          title: Text(local.warning),
                           content: Text(state.verify!.data.message),
                           actions: [
                             GestureDetector(
                               onTap: () => Navigator.pop(context),
-                              child: const Text("OK"),
+                              child: Text(local.ok),
                             ),
                           ],
                         );

@@ -162,4 +162,19 @@ class MyLocalizationsEn extends MyLocalizations {
 
   @override
   String get with_photo => 'with Photo';
+
+  @override
+  String get are_you_sure_you_want_logout => 'Are you sure you want to logout?';
+
+  @override
+  String get ok => 'OK';
+
+  @override
+  String get no => 'NO';
+
+  @override
+  String get warning => 'Warning';
+
+  @override
+  String get edit_profile => 'Edit Profile';
 }

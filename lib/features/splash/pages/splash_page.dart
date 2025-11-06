@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:go_router/go_router.dart';
@@ -6,6 +7,8 @@ import 'package:talabajon/core/routing/routes.dart';
 import 'package:talabajon/core/utils/colors.dart';
 import 'package:talabajon/core/utils/svgs.dart';
 import 'package:talabajon/core/utils/styles.dart';
+import 'package:talabajon/features/home/managers/me_bloc.dart';
+import 'package:talabajon/features/home/managers/me_event.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -31,6 +34,7 @@ class _SplashPageState extends State<SplashPage> {
     if (!mounted) return;
 
     if (token != null && token.isNotEmpty) {
+      context.read<MeBloc>().add(MeEvent());
       context.go(Routes.home);
     } else {
       context.go(Routes.selectLanguage);

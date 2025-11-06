@@ -9,14 +9,20 @@ import 'package:talabajon/core/utils/svgs.dart';
 import 'package:talabajon/features/common/widgets/custom_svg_button.dart';
 import 'package:talabajon/features/service/managers/photo_bloc.dart';
 import 'package:talabajon/features/service/managers/photo_state.dart';
+import 'package:translator/translator.dart';
 
 import '../../../core/constants/status.dart';
 import '../managers/photo_event.dart';
 
 class ShowSelectPhotosBottomSheet extends StatefulWidget {
   final int pageCount;
+  final String controllerText;
 
-  const ShowSelectPhotosBottomSheet({super.key, required this.pageCount});
+  const ShowSelectPhotosBottomSheet({
+    super.key,
+    required this.pageCount,
+    required this.controllerText,
+  });
 
   @override
   State createState() => _ShowSelectPhotosBottomSheetState();
@@ -24,55 +30,89 @@ class ShowSelectPhotosBottomSheet extends StatefulWidget {
 
 class _ShowSelectPhotosBottomSheetState extends State<ShowSelectPhotosBottomSheet> {
   final searchController = TextEditingController();
-  final List selectedPhotos = [];
+  final translator = GoogleTranslator();
+
+  String currentSource = "google";
 
   @override
-  void dispose() {
-    searchController.dispose();
-    super.dispose();
+  void initState() {
+    super.initState();
+    context.read<PhotoBloc>().add(SetPhotoLimitEvent(widget.pageCount));
+    searchController.text = widget.controllerText;
+    context.read<PhotoBloc>().add(GoogleEvent(title: searchController.text));
   }
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            width: 146.w,
-            height: 5.h,
-            decoration: BoxDecoration(
-              color: Colors.grey,
-              borderRadius: BorderRadius.circular(10),
-            ),
-          ),
-          SizedBox(height: 16.h),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return BlocBuilder<PhotoBloc, PhotoState>(
+      builder: (context, state) {
+        final currentStatus = currentSource == "google" ? state.googleStatus : state.yandexState;
+        final currentData = currentSource == "google" ? state.google : state.yandex;
+        final remainingPhotos = state.pageCount - state.selectedPhotos.length;
+        return Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
+              Container(
+                width: 146.w,
+                height: 5.h,
+                decoration: BoxDecoration(
+                  color: Colors.grey,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              SizedBox(height: 16.h),
               Row(
-                spacing: 8.w,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  _searchButton("Yandex", AppSvgs.yandex, () {}),
-                  _searchButton("Google", AppSvgs.google, () {}),
+                  Row(
+                    children: [
+                      _searchButton(
+                        "Google",
+                        AppSvgs.google,
+                        currentSource == "google",
+                        () {
+                          setState(() => currentSource = "google");
+                          context.read<PhotoBloc>().add(GoogleEvent(title: searchController.text));
+                        },
+                      ),
+                      SizedBox(width: 8.w),
+                      _searchButton(
+                        "Yandex",
+                        AppSvgs.yandex,
+                        currentSource == "yandex",
+                        () {
+                          setState(() => currentSource = "yandex");
+                          context.read<PhotoBloc>().add(YandexEvent(title: searchController.text));
+                        },
+                      ),
+                    ],
+                  ),
+                  GestureDetector(
+                    onTap: () => context.pop(),
+                    child: SvgPicture.asset(
+                      AppSvgs.cancel,
+                      width: 24.w,
+                      height: 24.h,
+                    ),
+                  ),
                 ],
               ),
-              GestureDetector(
-                onTap: () {
-                  context.pop();
-                },
-                child: SvgPicture.asset(AppSvgs.cancel, width: 24.w, height: 24.h),
-              ),
-            ],
-          ),
-          SizedBox(height: 12.h),
-          BlocBuilder<PhotoBloc, PhotoState>(
-            builder: (context, state) {
-              return TextField(
+              SizedBox(height: 12.h),
+
+              TextField(
                 controller: searchController,
-                onChanged: (query) {
-                  context.read<PhotoBloc>().add(GoogleEvent(title: query));
+                onChanged: (query) async {
+                  if (query.trim().isEmpty) return;
+
+                  final translation = await translator.translate(query, to: 'en');
+
+                  if (currentSource == "google") {
+                    context.read<PhotoBloc>().add(GoogleEvent(title: translation.text));
+                  } else {
+                    context.read<PhotoBloc>().add(YandexEvent(title: translation.text));
+                  }
                 },
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 9.h),
@@ -92,172 +132,162 @@ class _ShowSelectPhotosBottomSheetState extends State<ShowSelectPhotosBottomShee
                     borderRadius: BorderRadius.circular(7.r),
                     borderSide: BorderSide(color: AppColors.border),
                   ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(7.r),
-                    borderSide: BorderSide(color: AppColors.border),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(7.r),
-                    borderSide: BorderSide(color: AppColors.border),
+                ),
+              ),
+              SizedBox(height: 10.h),
+
+              if (remainingPhotos > 0)
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "⚠️ Yana $remainingPhotos ta rasm tanlashingiz mumkin",
+                    style: AppStyles.w400s12,
                   ),
                 ),
-              );
-            },
-          ),
-          SizedBox(height: 10.h),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: (selectedPhotos.length < widget.pageCount)
-                ? Text(
-                    "⚠️ Yana ${widget.pageCount - selectedPhotos.length} ta rasm tanlashingiz kerak",
-                    style: AppStyles.w400s12,
-                  )
-                : const SizedBox.shrink(),
-          ),
-
-          SizedBox(height: 16.h),
-          SizedBox(
-            height: 464.h,
-            child: BlocBuilder<PhotoBloc, PhotoState>(
-              builder: (context, state) {
-                if (state.googleStatus == Status.loading) {
-                  return const Center(child: CircularProgressIndicator());
-                }
-                if (state.google?.data.photos.isEmpty ?? true) {
-                  return const Center(child: Text("Rasmlar topilmadi"));
-                }
-                return GridView.builder(
-                  shrinkWrap: true,
-                  physics: const BouncingScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    mainAxisSpacing: 16.h,
-                    crossAxisSpacing: 14.w,
+              if (remainingPhotos == 0)
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "✅ Limit to‘ldi, endi 'Add Photos' tugmasini bosing",
+                    style: AppStyles.w400s12.copyWith(color: Colors.green),
                   ),
-                  itemCount: state.google!.data.photos.length,
-                  itemBuilder: (_, index) {
-                    final photo = state.google!.data.photos[index];
-                    final tanlangan = selectedPhotos.contains(index);
-                    return GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          if (tanlangan) {
-                            selectedPhotos.remove(index);
-                          } else {
-                            if (selectedPhotos.length < widget.pageCount) {
-                              selectedPhotos.add(index);
-                            }
-                          }
-                        });
-                      },
-                      child: Stack(
-                        children: [
-                          GestureDetector(
-                            onLongPress: () {
-                              showDialog(
-                                context: context,
-                                barrierDismissible: true,
-                                builder: (_) => GestureDetector(
-                                  onTap: () {
-                                    context.pop();
-                                  },
-                                  child: Dialog(
-                                    backgroundColor: Colors.transparent,
-                                    child: Center(
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(12),
-                                        child: Image.network(
-                                          photo.fullUrl,
-                                          fit: BoxFit.contain,
-                                          width: 410.w,
-                                          height: 600.h,
-                                          loadingBuilder: (context, child, loadingProgress) {
-                                            if (loadingProgress == null) return child;
-                                            return SizedBox(
-                                              width: 410.w,
-                                              height: 600.h,
-                                              child: Center(
-                                                child: CircularProgressIndicator(
-                                                  color: AppColors.white,
-                                                  value: loadingProgress.expectedTotalBytes != null
-                                                      ? loadingProgress.cumulativeBytesLoaded /
-                                                      (loadingProgress.expectedTotalBytes ?? 1)
-                                                      : null,
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                          errorBuilder: (context, error, stackTrace) => const Icon(
-                                            Icons.broken_image,
-                                            color: Colors.red,
-                                            size: 60,
-                                          ),
-                                        ),
-                                      ),
-                                    )
+                ),
+              SizedBox(height: 16.h),
+              SizedBox(
+                height: 464.h,
+                child: Builder(
+                  builder: (_) {
+                    if (currentStatus == Status.loading) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+                    if (currentData?.data.photos.isEmpty ?? true) {
+                      return const Center(child: Text("Rasmlar topilmadi"));
+                    }
 
+                    final photos = currentData!.data.photos;
+
+                    return GridView.builder(
+                      shrinkWrap: true,
+                      physics: const BouncingScrollPhysics(),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                        mainAxisSpacing: 16.h,
+                        crossAxisSpacing: 14.w,
+                      ),
+                      itemCount: photos.length,
+                      itemBuilder: (_, index) {
+                        final photo = photos[index];
+                        final selected = state.selectedPhotos.any((p) => p.id == photo.id);
+
+                        return GestureDetector(
+                          onTap: () {
+                            if (state.selectedPhotos.length < state.pageCount || selected) {
+                              context.read<PhotoBloc>().add(TogglePhotoSelectionEvent(photo));
+                            }
+                          },
+                          onLongPress: () {
+                            showDialog(
+                              context: context,
+                              barrierDismissible: true,
+                              builder: (_) => GestureDetector(
+                                onTap: () => context.pop(),
+                                child: Dialog(
+                                  backgroundColor: Colors.transparent,
+                                  child: Center(
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(12),
+                                      child: Image.network(
+                                        photo.fullUrl,
+                                        fit: BoxFit.contain,
+                                        width: 410.w,
+                                        height: 600.h,
+                                        loadingBuilder: (context, child, progress) {
+                                          if (progress == null) return child;
+                                          return SizedBox(
+                                            width: 410.w,
+                                            height: 600.h,
+                                            child: Center(
+                                              child: CircularProgressIndicator(
+                                                color: AppColors.white,
+                                                value: progress.expectedTotalBytes != null
+                                                    ? progress.cumulativeBytesLoaded / (progress.expectedTotalBytes ?? 1)
+                                                    : null,
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                        errorBuilder: (context, error, stackTrace) =>
+                                            const Icon(Icons.broken_image, color: Colors.red, size: 60),
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              );
-                            },
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(12),
-                              child: Image.network(
-                                photo.thumbnailUrl,
-                                fit: BoxFit.cover,
-                                width: double.infinity,
-                                height: double.infinity,
                               ),
-                            ),
-                          ),
-                          if (tanlangan)
-                            Positioned(
-                              top: 6,
-                              right: 6,
-                              child: Container(
-                                decoration: const BoxDecoration(
-                                  color: Colors.green,
-                                  shape: BoxShape.circle,
+                            );
+                          },
+                          child: Stack(
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(12),
+                                child: Image.network(
+                                  photo.thumbnailUrl,
+                                  fit: BoxFit.cover,
+                                  width: double.infinity,
+                                  height: double.infinity,
+                                  errorBuilder: (context, error, stackTrace) => const Center(
+                                    child: Icon(Icons.broken_image, color: Colors.red, size: 60),
+                                  ),
                                 ),
-                                padding: const EdgeInsets.all(4),
-                                child: const Icon(Icons.check, size: 14, color: Colors.white),
                               ),
-                            ),
-                        ],
-                      ),
+                              if (selected)
+                                Positioned(
+                                  top: 6,
+                                  right: 6,
+                                  child: Container(
+                                    decoration: const BoxDecoration(
+                                      color: Colors.green,
+                                      shape: BoxShape.circle,
+                                    ),
+                                    padding: const EdgeInsets.all(4),
+                                    child: const Icon(Icons.check, size: 14, color: Colors.white),
+                                  ),
+                                ),
+                            ],
+                          ),
+                        );
+                      },
                     );
                   },
-                );
-              },
-            ),
-          ),
-          SizedBox(height: 20.h),
-          CustomSvgButton(
-            title: "Add Photos",
-            svg: AppSvgs.addCircle,
-            width: 390,
-            height: 54,
-            onPressed: () {
-              final state = context.read<PhotoBloc>().state;
-              final tanlanganRasmlar = selectedPhotos.map((index) => state.google!.data.photos[index].thumbnailUrl).toList();
-              context.pop(tanlanganRasmlar);
-            },
-          ),
+                ),
+              ),
+              SizedBox(height: 20.h),
 
-          SizedBox(height: 9.h),
-        ],
-      ),
+              CustomSvgButton(
+                title: "Add Photos",
+                svg: AppSvgs.addCircle,
+                width: 390,
+                height: 54,
+                onPressed: () {
+                  context.pop();
+                },
+              ),
+              SizedBox(height: 9.h),
+            ],
+          ),
+        );
+      },
     );
   }
 
-  Widget _searchButton(String text, String svg, VoidCallback onPressed) {
+  Widget _searchButton(String text, String svg, bool isActive, VoidCallback onPressed) {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 2.h),
         decoration: BoxDecoration(
-          color: AppColors.black.withValues(alpha: 0.5),
+          color: isActive ? AppColors.indigoBlue.withValues(alpha: 0.8) : AppColors.black.withValues(alpha: 0.4),
           borderRadius: BorderRadius.circular(8),
+          border: isActive ? Border.all(color: AppColors.white, width: 1.2) : null,
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
