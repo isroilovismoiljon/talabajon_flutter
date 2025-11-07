@@ -44,115 +44,116 @@ class _CreatePresentationPageState extends State<CreatePresentationPage> {
 
     return Scaffold(
       appBar: AppBarCommon(title: local.create_presentation),
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(20.w, 25.h, 20.w, 29.h),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: 20.h,
-          children: [
-            InputFieldsSection(
-              themeController: themeController,
-              authorController: authorController,
-              local: local,
-            ),
-            PageCountRow(controller: pageCountController),
-            CustomSvgButton(
-              title: local.select_design,
-              svg: AppSvgs.template,
-              width: 390,
-              height: 48,
-              onPressed: () {
-                showModalBottomSheet(
-                  context: context,
-                  isScrollControlled: true,
-                  backgroundColor: Colors.transparent,
-                  builder: (_) => const PresentationTemplateBottomSheet(),
-                );
-              },
-            ),
-            BlocBuilder<DesignBloc, DesignState>(
-              builder: (context, state) {
-                final photoUrl = state.selectedPhotos?.firstPhotoUrl;
-
-                if (photoUrl == null || photoUrl.isEmpty) {
-                  return const SizedBox.shrink();
-                }
-                return Stack(
-                  children: [
-                    Container(
-                      width: 190.w,
-                      height: 115.h,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(color: Colors.grey[300]!),
-                        borderRadius: BorderRadius.circular(10.r),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withValues(alpha: 0.1),
-                            blurRadius: 4,
-                            offset: const Offset(0, 2),
-                          ),
-                        ],
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10.r),
-                        child: Image.network(
-                          photoUrl,
-                          fit: BoxFit.cover,
-                          width: double.infinity,
-                          height: double.infinity,
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      left: 10.w,
-                      bottom: 9.h,
-                      child: Container(
-                        width: 47.w,
-                        height: 20.h,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(20.w, 25.h, 20.w, 29.h),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: 20.h,
+            children: [
+              InputFieldsSection(
+                themeController: themeController,
+                authorController: authorController,
+                local: local,
+              ),
+              PageCountRow(controller: pageCountController),
+              CustomSvgButton(
+                title: local.select_design,
+                svg: AppSvgs.template,
+                width: 390,
+                height: 48,
+                onPressed: () {
+                  showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    backgroundColor: Colors.transparent,
+                    builder: (_) => const PresentationTemplateBottomSheet(),
+                  );
+                },
+              ),
+              BlocBuilder<DesignBloc, DesignState>(
+                builder: (context, state) {
+                  final photoUrl = state.selectedPhotos?.firstPhotoUrl;
+        
+                  if (photoUrl == null || photoUrl.isEmpty) {
+                    return const SizedBox.shrink();
+                  }
+                  return Stack(
+                    children: [
+                      Container(
+                        width: 190.w,
+                        height: 115.h,
                         decoration: BoxDecoration(
-                          color: Colors.grey.withValues(alpha: 0.8),
-                          borderRadius: BorderRadius.circular(7.r),
-                        ),
-                        padding: EdgeInsets.symmetric(horizontal: 7.w, vertical: 1.h),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            SvgPicture.asset(
-                              AppSvgs.copy,
-                              width: 18.w,
-                              height: 18.h,
-                              colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
-                            ),
-                            Text(
-                              "${state.selectedPhotos!.photoCount}",
-                              style: AppStyles.w400s14w,
+                          color: Colors.white,
+                          border: Border.all(color: Colors.grey[300]!),
+                          borderRadius: BorderRadius.circular(10.r),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withValues(alpha: 0.1),
+                              blurRadius: 4,
+                              offset: const Offset(0, 2),
                             ),
                           ],
                         ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10.r),
+                          child: Image.network(
+                            photoUrl,
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                            height: double.infinity,
+                          ),
+                        ),
                       ),
-                    ),
-                  ],
-                );
-              },
-            ),
-
-            PhotoToggleButtons(
-              withPhoto: withPhoto,
-              togglePhoto: togglePhoto,
-              local: local,
-            ),
-            if (withPhoto)
-              Expanded(
-                child: PhotoGridSection(
-                  themeController: themeController,
-                  pageCountController: pageCountController,
+                      Positioned(
+                        left: 10.w,
+                        bottom: 9.h,
+                        child: Container(
+                          width: 47.w,
+                          height: 20.h,
+                          decoration: BoxDecoration(
+                            color: Colors.grey.withValues(alpha: 0.8),
+                            borderRadius: BorderRadius.circular(7.r),
+                          ),
+                          padding: EdgeInsets.symmetric(horizontal: 7.w, vertical: 1.h),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SvgPicture.asset(
+                                AppSvgs.copy,
+                                width: 18.w,
+                                height: 18.h,
+                                colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                              ),
+                              Text(
+                                "${state.selectedPhotos!.photoCount}",
+                                style: AppStyles.w400s14w,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              ),
+        
+              PhotoToggleButtons(
+                withPhoto: withPhoto,
+                togglePhoto: togglePhoto,
+                local: local,
+              ),
+              if (withPhoto)
+                SizedBox(
+                  height: 250.h,
+                  child: PhotoGridSection(
+                    themeController: themeController,
+                    pageCountController: pageCountController,
+                  ),
                 ),
-              )
-            else
-              const Spacer(),
-            CustomButton(title: local.create_presentation),
-          ],
+              CustomButton(title: local.create_presentation),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: const CustomBottomNavigationBar(activeIndex: 0),

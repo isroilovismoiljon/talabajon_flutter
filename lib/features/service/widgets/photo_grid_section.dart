@@ -5,7 +5,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:talabajon/core/utils/colors.dart';
 import 'package:talabajon/core/utils/svgs.dart';
 import 'package:talabajon/features/service/managers/photo/photo_bloc.dart';
-
 import '../managers/photo/photo_event.dart';
 import '../managers/photo/photo_state.dart';
 import '../widgets/show_select_photos_bottom_sheet.dart';
@@ -39,29 +38,47 @@ class PhotoGridSection extends StatelessWidget {
             if (index == state.selectedPhotos.length) {
               return GestureDetector(
                 onTap: () async {
-                  if (state.selectedPhotos.length < maxSelectable) {
-                    await showModalBottomSheet<List<String>>(
-                      context: context,
-                      isScrollControlled: true,
-                      backgroundColor: AppColors.light,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.vertical(
-                          top: Radius.circular(24),
+                  if (themeController.text.isNotEmpty) {
+                    if (state.selectedPhotos.length < maxSelectable) {
+                      await showModalBottomSheet<List<String>>(
+                        context: context,
+                        isScrollControlled: true,
+                        backgroundColor: AppColors.light,
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(24),
+                          ),
                         ),
-                      ),
-                      builder: (_) => ShowSelectPhotosBottomSheet(
-                        pageCount: maxSelectable,
-                        controllerText: themeController.text,
-                      ),
-                    );
-                  } else {
+                        builder: (_) => ShowSelectPhotosBottomSheet(
+                          pageCount: maxSelectable,
+                          controllerText: themeController.text,
+                        ),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: const Text(
+                            "Siz yetarlicha rasm tanlagansiz, avval rasmni o‘chiring.",
+                          ),
+                          behavior: SnackBarBehavior.floating,
+                          margin: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 12),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14),
+                          ),
+                          duration: const Duration(seconds: 2),
+                        ),
+                      );
+                    }
+                  }  else {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: const Text(
-                          "Siz yetarlicha rasm tanlagansiz, avval rasmni o‘chiring.",
+                          "Avval mavzu kiriting.",
                         ),
                         behavior: SnackBarBehavior.floating,
-                        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 12),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(14),
                         ),
@@ -69,6 +86,7 @@ class PhotoGridSection extends StatelessWidget {
                       ),
                     );
                   }
+
                 },
                 child: Container(
                   decoration: BoxDecoration(

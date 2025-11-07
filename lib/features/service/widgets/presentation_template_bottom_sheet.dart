@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:talabajon/core/constants/status.dart';
 import 'package:talabajon/core/utils/styles.dart';
 import 'package:talabajon/features/service/managers/design/design_bloc.dart';
@@ -92,6 +93,7 @@ class _PresentationTemplateBottomSheetState extends State<PresentationTemplateBo
                             return GestureDetector(
                               onTap: () {
                                 context.read<DesignBloc>().add(SelectDesignPhotoEvent(designItem));
+                                context.pop();
                               },
                               onLongPress: () {
                                 context.read<DesignBloc>().add(

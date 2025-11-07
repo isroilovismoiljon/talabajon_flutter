@@ -13,11 +13,11 @@ class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
   PhotoBloc({required PhotoRepository photoRepo}) : _photoRepo = photoRepo, super(PhotoState.initial()) {
     on<GoogleEvent>(
       _fetchGoogle,
-      transformer: (events, mapper) => events.debounceTime(const Duration(milliseconds: 1000)).switchMap(mapper),
+      transformer: (events, mapper) => events.debounceTime(const Duration(milliseconds: 300)).switchMap(mapper),
     );
     on<YandexEvent>(
       _fetchYandex,
-      transformer: (events, mapper) => events.debounceTime(const Duration(milliseconds: 1000)).switchMap(mapper),
+      transformer: (events, mapper) => events.debounceTime(const Duration(milliseconds: 300)).switchMap(mapper),
     );
     on<TogglePhotoSelectionEvent>(_togglePhotoSelection);
     on<SetPhotoLimitEvent>(_setPhotoLimit);
