@@ -42,7 +42,9 @@ class _ShowSelectPhotosBottomSheetState extends State<ShowSelectPhotosBottomShee
     super.initState();
     context.read<PhotoBloc>().add(SetPhotoLimitEvent(widget.pageCount));
     searchController.text = widget.controllerText;
-    context.read<PhotoBloc>().add(GoogleEvent(title: searchController.text));
+    currentSource == "google"
+        ? context.read<PhotoBloc>().add(GoogleEvent(title: searchController.text))
+        : context.read<PhotoBloc>().add(YandexEvent(title: searchController.text));
   }
 
   @override
@@ -62,7 +64,7 @@ class _ShowSelectPhotosBottomSheetState extends State<ShowSelectPhotosBottomShee
                 height: 5.h,
                 decoration: BoxDecoration(
                   color: AppColors.black,
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(10.r),
                 ),
               ),
               SizedBox(height: 16.h),
@@ -75,7 +77,7 @@ class _ShowSelectPhotosBottomSheetState extends State<ShowSelectPhotosBottomShee
                         "Yandex",
                         AppSvgs.yandex,
                         currentSource == "yandex",
-                            () {
+                        () {
                           setState(() => currentSource = "yandex");
                           context.read<PhotoBloc>().add(YandexEvent(title: searchController.text));
                         },
@@ -85,7 +87,7 @@ class _ShowSelectPhotosBottomSheetState extends State<ShowSelectPhotosBottomShee
                         "Google",
                         AppSvgs.google,
                         currentSource == "google",
-                            () {
+                        () {
                           setState(() => currentSource = "google");
                           context.read<PhotoBloc>().add(GoogleEvent(title: searchController.text));
                         },
@@ -107,9 +109,7 @@ class _ShowSelectPhotosBottomSheetState extends State<ShowSelectPhotosBottomShee
               TextField(
                 controller: searchController,
                 onChanged: (query) async {
-                  if (query
-                      .trim()
-                      .isEmpty) return;
+                  if (query.trim().isEmpty) return;
 
                   final translation = await translator.translate(query, to: 'en');
 
@@ -191,81 +191,95 @@ class _ShowSelectPhotosBottomSheetState extends State<ShowSelectPhotosBottomShee
                             return isError
                                 ? const SizedBox.shrink()
                                 : GestureDetector(
-                              onTap: () {
-                                if (!isError && (state.selectedPhotos.length < state.pageCount || selected)) {
-                                  context.read<PhotoBloc>().add(TogglePhotoSelectionEvent(photo));
-                                }
-                              },
-                              onLongPress: () {
-                                if (isError) return;
-                                showDialog(
-                                  context: context,
-                                  barrierDismissible: true,
-                                  builder: (_) =>
-                                      GestureDetector(
-                                        onTap: () => context.pop(),
-                                        child: Dialog(
-                                          backgroundColor: Colors.transparent,
-                                          child: Center(
-                                            child: ClipRRect(
-                                              borderRadius: BorderRadius.circular(12),
-                                              child: Image.network(
-                                                photo.fullUrl,
-                                                fit: BoxFit.contain,
-                                                width: 410.w,
-                                                height: 600.h,
-                                                loadingBuilder: (context, child, progress) {
-                                                  if (progress == null) return child;
-                                                  return SizedBox(
-                                                    width: 410.w,
-                                                    height: 600.h,
-                                                    child: const Center(
-                                                      child: CircularProgressIndicator(),
-                                                    ),
-                                                  );
-                                                },
-                                                errorBuilder: (context, error, stackTrace) {
-                                                  setInnerState(() => isError = true);
-                                                  return const SizedBox.shrink();
-                                                },
+                                    onTap: () {
+                                      if (!isError && (state.selectedPhotos.length < state.pageCount || selected)) {
+                                        context.read<PhotoBloc>().add(TogglePhotoSelectionEvent(photo));
+                                      }
+                                    },
+                                    onLongPress: () {
+                                      if (isError) return;
+                                      showDialog(
+                                        context: context,
+                                        barrierDismissible: true,
+                                        builder: (_) => GestureDetector(
+                                          onTap: () => context.pop(),
+                                          child: Dialog(
+                                            backgroundColor: Colors.transparent,
+                                            child: Center(
+                                              child: ClipRRect(
+                                                borderRadius: BorderRadius.circular(12.r),
+                                                child: Image.network(
+                                                  photo.fullUrl,
+                                                  fit: BoxFit.contain,
+                                                  width: 410.w,
+                                                  height: 600.h,
+                                                  loadingBuilder: (context, child, progress) {
+                                                    if (progress == null) return child;
+                                                    return SizedBox(
+                                                      width: 410.w,
+                                                      height: 600.h,
+                                                      child: const Center(
+                                                        child: CircularProgressIndicator(),
+                                                      ),
+                                                    );
+                                                  },
+                                                  errorBuilder: (context, error, stackTrace) {
+                                                    Future.microtask(() => setInnerState(() => isError = true));
+                                                    return const SizedBox.shrink();
+                                                  },
+
+                                                ),
                                               ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                );
-                              },
-                              child: Stack(
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(12),
-                                    child: Image.network(
-                                      photo.thumbnailUrl,
-                                      fit: BoxFit.cover,
-                                      width: double.infinity,
-                                      height: double.infinity,
-                                      errorBuilder: (context, error, stackTrace) {
-                                        setInnerState(() => isError = true);
-                                        return const SizedBox.shrink();
-                                      },
-                                    ),
-                                  ),
-                                  if (selected)
-                                    Positioned(
-                                      top: 6,
-                                      right: 6,
-                                      child: Container(
-                                        decoration: const BoxDecoration(
-                                          color: Colors.green,
-                                          shape: BoxShape.circle,
+                                      );
+                                    },
+                                    child: Stack(
+                                      children: [
+                                        Container(
+                                          width: double.infinity,
+                                          height: double.infinity,
+                                          decoration: BoxDecoration(
+                                            color: Color.fromARGB(
+                                              255,
+                                              random.nextInt(256),
+                                              random.nextInt(256),
+                                              random.nextInt(256),
+                                            ),
+                                            borderRadius: BorderRadius.circular(12.r),
+                                          ),
                                         ),
-                                        padding: const EdgeInsets.all(4),
-                                        child: const Icon(Icons.check, size: 14, color: Colors.white),
-                                      ),
+                                        ClipRRect(
+                                          borderRadius: BorderRadius.circular(12.r),
+                                          child: Image.network(
+                                            photo.thumbnailUrl,
+                                            fit: BoxFit.cover,
+                                            width: double.infinity,
+                                            height: double.infinity,
+                                            errorBuilder: (context, error, stackTrace) {
+                                              Future.microtask(() => setInnerState(() => isError = true));
+                                              return const SizedBox.shrink();
+                                            },
+
+                                          ),
+                                        ),
+                                        if (selected)
+                                          Positioned(
+                                            top: 6,
+                                            right: 6,
+                                            child: Container(
+                                              decoration: const BoxDecoration(
+                                                color: Colors.green,
+                                                shape: BoxShape.circle,
+                                              ),
+                                              padding: const EdgeInsets.all(4),
+                                              child: const Icon(Icons.check, size: 14, color: Colors.white),
+                                            ),
+                                          ),
+                                      ],
                                     ),
-                                ],
-                              ),
-                            );
+                                  );
                           },
                         );
                       },
@@ -299,7 +313,7 @@ class _ShowSelectPhotosBottomSheetState extends State<ShowSelectPhotosBottomShee
         padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 2.h),
         decoration: BoxDecoration(
           color: isActive ? AppColors.indigoBlue.withValues(alpha: 0.8) : AppColors.black.withValues(alpha: 0.4),
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(8.r),
           border: isActive ? Border.all(color: AppColors.white, width: 1.2) : null,
         ),
         child: Row(
