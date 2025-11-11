@@ -3,6 +3,7 @@ import 'package:talabajon/core/routing/routes.dart';
 import 'package:talabajon/features/auth/pages/login_page.dart';
 import 'package:talabajon/features/auth/pages/register_page.dart';
 import 'package:talabajon/features/auth/pages/verify_page.dart';
+import 'package:talabajon/features/balance/pages/balance_page.dart';
 import 'package:talabajon/features/home/pages/home_page.dart';
 import 'package:talabajon/features/profile/pages/profile_page.dart';
 import 'package:talabajon/features/service/pages/create_presentation_pages.dart';
@@ -62,6 +63,10 @@ final router = GoRouter(
       builder: (context, state) => VerifyPage(
         register: (state.extra as Map)["registerInfo"],
       ),
+    ),
+    GoRoute(
+      path: Routes.balance,
+      builder: (context, state) => BalancePage(),
     ),
   ],
 );
