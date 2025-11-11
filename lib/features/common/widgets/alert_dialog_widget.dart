@@ -3,8 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:talabajon/core/utils/svgs.dart';
 
-import '../../../../core/l10n/app_localizations.dart';
-import '../../../../core/utils/styles.dart';
+import '../../../core/l10n/app_localizations.dart';
+import '../../../core/utils/styles.dart';
 
 class AlertDialogWidget extends StatelessWidget {
   const AlertDialogWidget({

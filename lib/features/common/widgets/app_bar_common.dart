@@ -18,7 +18,7 @@ class AppBarCommon extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       surfaceTintColor: Colors.transparent,
-      leadingWidth: 75,
+      leadingWidth: 75.w,
       leading: Center(
         child: IconButton(
           onPressed: (){context.pop();},
