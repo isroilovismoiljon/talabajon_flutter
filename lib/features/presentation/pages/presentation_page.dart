@@ -24,7 +24,7 @@ class _PresentationPageState extends State<PresentationPage> {
     "https://picsum.photos/400/244?4",
   ];
 
-  void _oldinga() {
+  void oldinga() {
     if (_currentIndex < _rasmlar.length - 1) {
       _controller.nextPage(
         duration: const Duration(milliseconds: 300),
@@ -33,7 +33,7 @@ class _PresentationPageState extends State<PresentationPage> {
     }
   }
 
-  void _orqaga() {
+  void orqaga() {
     if (_currentIndex > 0) {
       _controller.previousPage(
         duration: const Duration(milliseconds: 300),
@@ -65,11 +65,11 @@ class _PresentationPageState extends State<PresentationPage> {
                     spacing: 15.w,
                     children: [
                       GestureDetector(
-                        onTap: _orqaga,
+                        onTap: orqaga,
                         child: Icon(Icons.arrow_back_ios_new_rounded, color: AppColors.white),
                       ),
                       GestureDetector(
-                        onTap: _oldinga,
+                        onTap: oldinga,
                         child: Icon(Icons.arrow_forward_ios_rounded, color: AppColors.white),
                       ),
                     ],
