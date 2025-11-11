@@ -9,4 +9,5 @@ class Routes {
   static const profile = "/profile";
   static const introductionApp = "/introduction-app";
   static const createPresentation = "/create-presentation";
+  static const presentation = "/presentation";
 }
