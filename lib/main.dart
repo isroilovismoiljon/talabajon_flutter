@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:talabajon/core/l10n/app_localizations.dart';
 import 'package:talabajon/core/routing/router.dart';
-
 import 'core/dependencies/bloc_dependencies.dart';
 import 'core/dependencies/dependencies.dart';
 import 'core/utils/themes.dart';
@@ -13,7 +12,7 @@ import 'features/common/managers/localizatoin_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  
   final prefs = SharedPreferencesAsync();
   final locale = await prefs.getString("locale") ?? "en";
   runApp(

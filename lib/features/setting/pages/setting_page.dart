@@ -6,7 +6,7 @@ import 'package:talabajon/core/utils/colors.dart';
 import 'package:talabajon/core/utils/svgs.dart';
 import 'package:talabajon/features/common/widgets/custom_bottom_navigation_bar.dart';
 import 'package:talabajon/features/common/widgets/custom_svg_button.dart';
-import 'package:talabajon/features/common/widgets/dialog/alert_dialog_widget.dart';
+import 'package:talabajon/features/common/widgets/alert_dialog_widget.dart';
 import 'package:talabajon/features/setting/widget/setting_widget.dart';
 
 import '../../../core/l10n/app_localizations.dart';
