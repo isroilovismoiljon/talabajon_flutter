@@ -49,5 +49,6 @@ class AppSvgs {
   static const literature = "assets/icons/literature.svg";
   static const all = "assets/icons/all.svg";
   static const pinterest = "assets/icons/pinterest.svg";
+  static const mingcuteSave = "assets/icons/mingcute_save.svg";
 
 }

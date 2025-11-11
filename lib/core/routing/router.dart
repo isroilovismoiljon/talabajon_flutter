@@ -9,6 +9,7 @@ import 'package:talabajon/features/profile/pages/profile_page.dart';
 import 'package:talabajon/features/service/pages/create_presentation_pages.dart';
 import 'package:talabajon/features/setting/pages/introduction_app_page.dart';
 
+import '../../features/presentation/pages/presentation_page.dart';
 import '../../features/setting/pages/setting_page.dart';
 import '../../features/splash/pages/select_lang_page.dart';
 import '../../features/splash/pages/splash_page.dart';
@@ -52,6 +53,10 @@ final router = GoRouter(
     GoRoute(
       path: Routes.login,
       builder: (context, state) => LoginPage(),
+    ),
+    GoRoute(
+      path: Routes.presentation,
+      builder: (context, state) => PresentationPage(),
     ),
     GoRoute(
       path: Routes.verify,

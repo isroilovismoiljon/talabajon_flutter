@@ -10,4 +10,5 @@ class Routes {
   static const introductionApp = "/introduction-app";
   static const createPresentation = "/create-presentation";
   static const balance = "/balance";
+  static const presentation = "/presentation";
 }
