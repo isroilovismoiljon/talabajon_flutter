@@ -25,7 +25,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
 
   final List<String> _routes = [
     Routes.home,
-    Routes.home,
+    Routes.balance,
     Routes.home,
     Routes.settings,
   ];

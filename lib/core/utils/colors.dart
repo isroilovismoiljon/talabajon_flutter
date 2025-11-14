@@ -4,6 +4,7 @@ class AppColors {
   static const light = Color(0xFFf8f8ff);
   static const dark = Color(0xFF041A2F);
   static const indigoBlue = Color(0xFF3c3add);
+  static const blueW = Color(0xFFDCDCFA);
   static const wBlue = Color(0xFF9db2ce);
   static const blue = Color(0xFF110f9c);
   static const neonGreen = Color(0xFF00F335);

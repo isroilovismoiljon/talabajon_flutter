@@ -26,6 +26,18 @@ class AppStyles {
     color: AppColors.black,
     fontFamily: FontFamily.montserrat,
   );
+  static const w700s20w = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w700,
+    color: AppColors.white,
+    fontFamily: FontFamily.montserrat,
+  );
+  static const w700s20 = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w700,
+    color: AppColors.black,
+    fontFamily: FontFamily.montserrat,
+  );
   static const w600s22w = TextStyle(
     fontSize: 22,
     fontWeight: FontWeight.w600,
@@ -96,7 +108,16 @@ class AppStyles {
     fontWeight: FontWeight.w500,
     color: AppColors.black,
   );
-
+  static const w500s16w = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    color: AppColors.white,
+  );
+  static const w500s16 = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    color: AppColors.black,
+  );
   static const w500s14w = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w500,
