@@ -50,5 +50,7 @@ class AppSvgs {
   static const all = "assets/icons/all.svg";
   static const pinterest = "assets/icons/pinterest.svg";
   static const mingcuteSave = "assets/icons/mingcute_save.svg";
+  static const image = "assets/icons/image.svg";
+  static const send = "assets/icons/send.svg";
 
 }

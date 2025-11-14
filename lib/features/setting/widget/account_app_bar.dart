@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:talabajon/core/routing/routes.dart';
 import 'package:talabajon/core/utils/styles.dart';
+import 'package:talabajon/core/utils/svgs.dart';
 import 'package:talabajon/features/home/managers/me_bloc.dart';
 import 'package:talabajon/features/home/managers/me_state.dart';
 
@@ -17,6 +20,15 @@ class AccountAppBar extends StatelessWidget implements PreferredSizeWidget {
     return BlocBuilder<MeBloc, MeState>(
       builder: (context, state) => AppBar(
         toolbarHeight: 85.h,
+        leadingWidth: 75.w,
+        leading: Center(
+          child: GestureDetector(
+            onTap: () {
+              context.go(Routes.home);
+            },
+            child: SvgPicture.asset(AppSvgs.backArrow),
+          ),
+        ),
         title: Align(
           alignment: Alignment.centerLeft,
           child: Text(local.my_account, style: AppStyles.w600s20),

@@ -177,4 +177,39 @@ class MyLocalizationsEn extends MyLocalizations {
 
   @override
   String get edit_profile => 'Edit Profile';
+
+  @override
+  String get payment_balance => 'Payment Balance';
+
+  @override
+  String get my_wallet => 'My Wallet';
+
+  @override
+  String get top_up_account => 'Top up account';
+
+  @override
+  String get payments => 'Payments';
+
+  @override
+  String get make_payment_card_numbers_below_upload_receipt =>
+      'Make a payment to one of the card numbers below and upload the receipt.';
+
+  @override
+  String get upload_payment => 'Upload payment';
+
+  @override
+  String get enter_amount_from_the_receipt =>
+      'Enter the amount from the receipt';
+
+  @override
+  String get send => 'Send';
+
+  @override
+  String get your_payment_has_been_received => 'Your payment has been received';
+
+  @override
+  String get your_payment_is_pending => 'Your payment is pending';
+
+  @override
+  String get your_payment_was_not_accepted => 'Your payment was not accepted';
 }

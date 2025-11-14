@@ -218,6 +218,50 @@
   "edit_profile": "Edit Profile",
   "@edit_profile": {
     "description": "Bu edit profile"
+  },
+  "payment_balance": "Payment Balance",
+  "@payment_balance": {
+    "description": "Bu balans title1 page"
+  },
+  "my_wallet": "My Wallet",
+  "@my_wallet": {
+    "description": "Bu balans title2 page"
+  },
+  "top_up_account": "Top up account",
+  "@top_up_account": {
+    "description": "Bu balans hisob to'ldirish"
+  },
+  "payments": "Payments",
+  "@payments": {
+    "description": "Bu balans cheklar"
+  },
+  "make_payment_card_numbers_below_upload_receipt": "Make a payment to one of the card numbers below and upload the receipt.",
+  "@make_payment_card_numbers_below_upload_receipt": {
+    "description": "Bu balans title1"
+  },
+  "upload_payment": "Upload payment",
+  "@upload_payment": {
+    "description": "Bu balans chek yuklash"
+  },
+  "enter_amount_from_the_receipt": "Enter the amount from the receipt",
+  "@enter_amount_from_the_receipt": {
+    "description": "Bu balans summa"
+  },
+  "send": "Send",
+  "@send": {
+    "description": "Bu balans success"
+  },
+  "your_payment_has_been_received": "Your payment has been received",
+  "@your_payment_has_been_received": {
+    "description": "Bu tolovlar 0"
+  },
+  "your_payment_is_pending": "Your payment is pending",
+  "@your_payment_is_pending": {
+    "description": "Bu tolovlar 1"
+  },
+  "your_payment_was_not_accepted": "Your payment was not accepted",
+  "@your_payment_was_not_accepted": {
+    "description": "Bu tolovlar 2"
   }
 
 }

@@ -53,5 +53,17 @@
     "ok": "Ha",
     "no": "Yo‘q",
     "warning": "Ogohlantirish",
-    "edit_profile": "Profilni tahrirlash"
+    "edit_profile": "Profilni tahrirlash",
+    "payment_balance": "To‘lov balansi",
+    "my_wallet": "Mening hamyonim",
+    "top_up_account": "Hisobni to‘ldirish",
+    "payments": "To‘lovlar",
+    "make_payment_card_numbers_below_upload_receipt": "Quyidagi karta raqamlaridan biriga to‘lov qiling va chekning rasmini yuklang.",
+    "upload_payment": "To‘lovni yuklash",
+    "enter_amount_from_the_receipt": "Chekdagi summani kiriting",
+    "send": "Yuborish",
+    "your_payment_has_been_received": "To‘lovingiz qabul qilindi",
+    "your_payment_is_pending": "To‘lovingiz kutilmoqda",
+    "your_payment_was_not_accepted": "To‘lovingiz qabul qilinmadi"
+
 }

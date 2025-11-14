@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 
 class UpdateProfileModel {
   final String firstName, lastName, userName, phoneNumber;

@@ -2,6 +2,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:talabajon/data/repositories/design_repository.dart';
+import 'package:talabajon/data/repositories/payments_repository.dart';
 import 'package:talabajon/data/repositories/photo_repository.dart';
 import 'package:talabajon/data/repositories/user_repository.dart';
 
@@ -26,5 +27,8 @@ final dependencies = <SingleChildWidget>[
   ),
   Provider(
     create: (context) => DesignRepository(client: context.read()),
+  ),
+  Provider(
+    create: (context) => PaymentsRepository(client: context.read()),
   ),
 ];

@@ -178,4 +178,38 @@ class MyLocalizationsRu extends MyLocalizations {
 
   @override
   String get edit_profile => 'Редактировать профиль';
+
+  @override
+  String get payment_balance => 'Платежный баланс';
+
+  @override
+  String get my_wallet => 'Мой кошелёк';
+
+  @override
+  String get top_up_account => 'Пополнить счёт';
+
+  @override
+  String get payments => 'Платежи';
+
+  @override
+  String get make_payment_card_numbers_below_upload_receipt =>
+      'Сделайте платёж на один из номеров карт ниже и загрузите чек.';
+
+  @override
+  String get upload_payment => 'Загрузить платёж';
+
+  @override
+  String get enter_amount_from_the_receipt => 'Введите сумму из чека';
+
+  @override
+  String get send => 'Отправить';
+
+  @override
+  String get your_payment_has_been_received => 'Ваш платёж принят';
+
+  @override
+  String get your_payment_is_pending => 'Ваш платёж ожидает обработки';
+
+  @override
+  String get your_payment_was_not_accepted => 'Ваш платёж не принят';
 }

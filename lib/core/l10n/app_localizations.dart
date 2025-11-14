@@ -429,6 +429,72 @@ abstract class MyLocalizations {
   /// In en, this message translates to:
   /// **'Edit Profile'**
   String get edit_profile;
+
+  /// Bu balans title1 page
+  ///
+  /// In en, this message translates to:
+  /// **'Payment Balance'**
+  String get payment_balance;
+
+  /// Bu balans title2 page
+  ///
+  /// In en, this message translates to:
+  /// **'My Wallet'**
+  String get my_wallet;
+
+  /// Bu balans hisob to'ldirish
+  ///
+  /// In en, this message translates to:
+  /// **'Top up account'**
+  String get top_up_account;
+
+  /// Bu balans cheklar
+  ///
+  /// In en, this message translates to:
+  /// **'Payments'**
+  String get payments;
+
+  /// Bu balans title1
+  ///
+  /// In en, this message translates to:
+  /// **'Make a payment to one of the card numbers below and upload the receipt.'**
+  String get make_payment_card_numbers_below_upload_receipt;
+
+  /// Bu balans chek yuklash
+  ///
+  /// In en, this message translates to:
+  /// **'Upload payment'**
+  String get upload_payment;
+
+  /// Bu balans summa
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the amount from the receipt'**
+  String get enter_amount_from_the_receipt;
+
+  /// Bu balans success
+  ///
+  /// In en, this message translates to:
+  /// **'Send'**
+  String get send;
+
+  /// Bu tolovlar 0
+  ///
+  /// In en, this message translates to:
+  /// **'Your payment has been received'**
+  String get your_payment_has_been_received;
+
+  /// Bu tolovlar 1
+  ///
+  /// In en, this message translates to:
+  /// **'Your payment is pending'**
+  String get your_payment_is_pending;
+
+  /// Bu tolovlar 2
+  ///
+  /// In en, this message translates to:
+  /// **'Your payment was not accepted'**
+  String get your_payment_was_not_accepted;
 }
 
 class _MyLocalizationsDelegate extends LocalizationsDelegate<MyLocalizations> {
