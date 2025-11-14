@@ -1,6 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:talabajon/features/auth/managers/verify/verify_bloc.dart';
+import 'package:talabajon/features/balance/managers/my_payments/my_payments_bloc.dart';
+import 'package:talabajon/features/balance/managers/payment/payment_bloc.dart';
 import 'package:talabajon/features/home/managers/me_bloc.dart';
 import 'package:talabajon/features/profile/managers/profile_bloc.dart';
 import 'package:talabajon/features/service/managers/design/design_bloc.dart';
@@ -34,5 +36,11 @@ final blocDependencies = <SingleChildWidget>[
   ),
   BlocProvider<DesignBloc>(
     create: (context) => DesignBloc(designRepo: context.read()),
+  ),
+  BlocProvider<MyPaymentsBloc>(
+    create: (context) => MyPaymentsBloc(paymentsRepo: context.read()),
+  ),
+  BlocProvider<PaymentBloc>(
+    create: (context) => PaymentBloc(paymentRepo: context.read()),
   ),
 ];

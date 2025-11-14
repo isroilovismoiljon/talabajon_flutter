@@ -177,4 +177,38 @@ class MyLocalizationsUz extends MyLocalizations {
 
   @override
   String get edit_profile => 'Profilni tahrirlash';
+
+  @override
+  String get payment_balance => 'To‘lov balansi';
+
+  @override
+  String get my_wallet => 'Mening hamyonim';
+
+  @override
+  String get top_up_account => 'Hisobni to‘ldirish';
+
+  @override
+  String get payments => 'To‘lovlar';
+
+  @override
+  String get make_payment_card_numbers_below_upload_receipt =>
+      'Quyidagi karta raqamlaridan biriga to‘lov qiling va chekning rasmini yuklang.';
+
+  @override
+  String get upload_payment => 'To‘lovni yuklash';
+
+  @override
+  String get enter_amount_from_the_receipt => 'Chekdagi summani kiriting';
+
+  @override
+  String get send => 'Yuborish';
+
+  @override
+  String get your_payment_has_been_received => 'To‘lovingiz qabul qilindi';
+
+  @override
+  String get your_payment_is_pending => 'To‘lovingiz kutilmoqda';
+
+  @override
+  String get your_payment_was_not_accepted => 'To‘lovingiz qabul qilinmadi';
 }

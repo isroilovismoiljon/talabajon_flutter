@@ -53,5 +53,17 @@
     "ok": "Да",
     "no": "Нет",
     "warning": "Предупреждение",
-    "edit_profile": "Редактировать профиль"
+    "edit_profile": "Редактировать профиль",
+    "payment_balance": "Платежный баланс",
+    "my_wallet": "Мой кошелёк",
+    "top_up_account": "Пополнить счёт",
+    "payments": "Платежи",
+    "make_payment_card_numbers_below_upload_receipt": "Сделайте платёж на один из номеров карт ниже и загрузите чек.",
+    "upload_payment": "Загрузить платёж",
+    "enter_amount_from_the_receipt": "Введите сумму из чека",
+    "send": "Отправить",
+    "your_payment_has_been_received": "Ваш платёж принят",
+    "your_payment_is_pending": "Ваш платёж ожидает обработки",
+    "your_payment_was_not_accepted": "Ваш платёж не принят"
+
 }

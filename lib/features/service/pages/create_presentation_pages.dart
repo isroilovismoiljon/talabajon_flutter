@@ -25,7 +25,8 @@ class CreatePresentationPage extends StatefulWidget {
   State<CreatePresentationPage> createState() => _CreatePresentationPageState();
 }
 
-class _CreatePresentationPageState extends State<CreatePresentationPage> {
+class _CreatePresentationPageState extends State<CreatePresentationPage> with TickerProviderStateMixin {
+  late final AnimationController transitionAnimationController;
   final themeController = TextEditingController();
   final authorController = TextEditingController();
   final pageCountController = TextEditingController(text: "10");
@@ -36,6 +37,24 @@ class _CreatePresentationPageState extends State<CreatePresentationPage> {
     setState(() {
       withPhoto = value;
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    transitionAnimationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 5000),
+    );
+  }
+
+  @override
+  void dispose() {
+    transitionAnimationController.dispose();
+    themeController.dispose();
+    authorController.dispose();
+    pageCountController.dispose();
+    super.dispose();
   }
 
   @override
@@ -67,6 +86,7 @@ class _CreatePresentationPageState extends State<CreatePresentationPage> {
                     context: context,
                     isScrollControlled: true,
                     backgroundColor: Colors.transparent,
+                    transitionAnimationController: transitionAnimationController,
                     builder: (_) => const PresentationTemplateBottomSheet(),
                   );
                 },
@@ -74,7 +94,7 @@ class _CreatePresentationPageState extends State<CreatePresentationPage> {
               BlocBuilder<DesignBloc, DesignState>(
                 builder: (context, state) {
                   final photoUrl = state.selectedPhotos?.firstPhotoUrl;
-        
+
                   if (photoUrl == null || photoUrl.isEmpty) {
                     return const SizedBox.shrink();
                   }
@@ -137,7 +157,7 @@ class _CreatePresentationPageState extends State<CreatePresentationPage> {
                   );
                 },
               ),
-        
+
               PhotoToggleButtons(
                 withPhoto: withPhoto,
                 togglePhoto: togglePhoto,

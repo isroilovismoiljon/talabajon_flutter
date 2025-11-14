@@ -108,6 +108,16 @@ class AppStyles {
     fontWeight: FontWeight.w500,
     color: AppColors.black,
   );
+  static const w500s20w = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w500,
+    color: AppColors.white,
+  );
+  static const w500s20 = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w500,
+    color: AppColors.black,
+  );
   static const w500s16w = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w500,
